@@ -3,7 +3,10 @@
 @section('title','套版-後台管理系統')
 
 @section('content')
-        <div class="content">
+        <div id="app">
+            <user-show></user-show>
+        </div>
+        <!--<div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -46,5 +49,5 @@
 
                 </div>
             </div>
-        </div>
+        </div>-->
 @stop

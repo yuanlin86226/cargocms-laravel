@@ -17,6 +17,8 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('user-index', require('./components/user/index.vue'));
+Vue.component('user-show', require('./components/user/show.vue'));
+Vue.component('user-edit', require('./components/user/edit.vue'));
 Vue.component('vue-pagination', require('./components/Pagination.vue'));
 const app = new Vue({
     el: '#app'

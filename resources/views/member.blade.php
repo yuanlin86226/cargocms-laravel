@@ -6,7 +6,7 @@
     <div id="app">
         <user-index></user-index>
     </div>
-    <div class="content">
+    <!--<div class="content">
         <div class="container-fluid">
 
             <div class="row">
@@ -79,7 +79,7 @@
 
 
         </div>
-    </div>
+    </div>-->
     
 
 @stop

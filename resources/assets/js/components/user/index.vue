@@ -36,10 +36,10 @@
                                         <td>{{ user.email }}</td>
                                         <td class="td-actions text-right">
 
-                                            <a  rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-user"></i>
+                                            <a :href="'ShowMember?id=' + user.id" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                                                    <i class="fa fa-user"></i>
                                             </a>
-                                            <a  rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                                            <a :href="'UpdateMember?id=' + user.id" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
                                                 <i class="fa fa-edit"></i>
                                             </a>      
                                             <a class="btn btn-danger btn-simple btn-xs">
@@ -50,7 +50,7 @@
                                     </tr>                                    
                                 </tbody>
                             </table>
-                            <vue-pagination  v-bind:pagination="pagination"
+                            <vue-pagination v-bind:pagination="pagination"
                                             v-on:click.native="getUsers(pagination.current_page)"
                                             :offset="4">
                             </vue-pagination>

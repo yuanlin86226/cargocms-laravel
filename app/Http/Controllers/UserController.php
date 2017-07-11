@@ -18,6 +18,26 @@ class UserController extends Controller
 
     public function findAll()
     {
-        return response()->json($this-> userService -> findAllWithPaginate());
+        return response()->json($this-> userService -> findAll());
     }
+
+    public function findOne($id)
+    {
+        error_log("=== $id ===" . $id);
+        return response()->json($this-> userService -> findOne($id));
+    }
+
+    public function update($id, data_request $request)
+    {
+ 
+        $user["id"] = $id; 
+        $user["email"] = $request -> email; 
+        $user["name"] = $request -> name; 
+
+        error_log(json_encode($user));
+
+        return response()->json($this-> userService -> update($user));
+    }
+
+
 }
