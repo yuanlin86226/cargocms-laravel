@@ -5,7 +5,9 @@
 @section('content')
         <div class="content">
             <div class="container-fluid">
-
+                <div class="row">
+                    <example></example>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card ">
@@ -22,7 +24,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="flag">
-                                                                <img src="../resources/assets/img/flags/US.png"
+                                                                <img src="/assets/img/flags/US.png"
                                                             </div>
                                                         </td>
                                                         <td>USA</td>
@@ -36,7 +38,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="flag">
-                                                                <img src="../resources/assets/img/flags/DE.png"
+                                                                <img src="/assets/img/flags/DE.png"
                                                             </div>
                                                         </td>
                                                         <td>Germany</td>
@@ -50,7 +52,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="flag">
-                                                                <img src="../resources/assets/img/flags/AU.png"
+                                                                <img src="/assets/img/flags/AU.png"
                                                             </div>
                                                         </td>
                                                         <td>Australia</td>
@@ -64,7 +66,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="flag">
-                                                                <img src="../resources/assets/img/flags/GB.png"
+                                                                <img src="/assets/img/flags/GB.png"
                                                             </div>
                                                         </td>
                                                         <td>United Kingdom</td>
@@ -78,7 +80,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="flag">
-                                                                <img src="../resources/assets/img/flags/RO.png"
+                                                                <img src="/assets/img/flags/RO.png"
                                                             </div>
                                                         </td>
                                                         <td>Romania</td>
@@ -92,7 +94,7 @@
                                                     <tr>
                                                         <td>
                                                             <div class="flag">
-                                                                <img src="../resources/assets/img/flags/BR.png"
+                                                                <img src="/assets/img/flags/BR.png"
                                                             </div>
                                                         </td>
                                                         <td>Brasil</td>

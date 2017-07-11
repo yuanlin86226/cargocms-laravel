@@ -53,6 +53,9 @@
 	
 	<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 	<script src="/assets/js/demo.js"></script>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 	    
     <script type="text/javascript">
         $().ready(function(){
