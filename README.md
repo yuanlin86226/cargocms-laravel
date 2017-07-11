@@ -52,3 +52,19 @@ php artisan serve
 
 <http://127.0.0.1:8000/login>
 
+## Vue 使用
+
+```
+npm i
+npm run dev
+```
+
+或是 `npm run watch`
+
+vue 檔案位置
+
+`resources/assets`
+
+npm run dev 執行完之後產出檔案
+
+`public/js/app.js`
