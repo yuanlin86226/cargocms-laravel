@@ -25,7 +25,12 @@ composer install
 
 ## 建立資料庫
 
-`php artisan migrate`
+```
+php artisan migrate
+php artisan migrate:refresh
+php artisan db:seed
+```
+
 
 ## 啟動 server
 
@@ -42,38 +47,8 @@ php artisan serve
 
 .env.example
 
-## api 測試網址
-
-<http://127.0.0.1:8000/api/user>
-
-## 前台使用者註冊
-
-<http://127.0.0.1:8000/register>
 
 ## 前台使用者登入
 
 <http://127.0.0.1:8000/login>
 
-## Vue 使用
-
-```
-npm i
-npm run dev
-```
-莉莉
-或是 `npm run watch`
-
-vue 檔案位置
-
-`resources/assets`
-
-npm run dev 執行完之後產出檔案
-
-`public/js/app.js`
-
-
-## JWT support
-
-get token
-
-<http://127.0.0.1:8000/api/authenticate?email=sample@gmail.com&password=pass>
