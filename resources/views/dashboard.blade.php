@@ -6,7 +6,9 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <example></example>
+                    <div id="app">
+                        <example></example>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
