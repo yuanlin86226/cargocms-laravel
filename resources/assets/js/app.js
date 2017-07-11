@@ -16,7 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-
+Vue.component('user-index', require('./components/user/index.vue'));
+Vue.component('vue-pagination', require('./components/Pagination.vue'));
 const app = new Vue({
     el: '#app'
 });
