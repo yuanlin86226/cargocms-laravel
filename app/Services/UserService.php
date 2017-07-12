@@ -2,6 +2,8 @@
 
 namespace App\Services;
 use App\User as User;
+use Exception;
+
 class UserService {
 
   public function findAll() {
@@ -23,6 +25,9 @@ class UserService {
     return User::destroy($id);
   }
   public function save($user) {
+
+    if($user["email"] == "") 
+      throw new Exception("email 不允許空白");
     
     $createdUser = User::create([
       'name' => $user["name"], 

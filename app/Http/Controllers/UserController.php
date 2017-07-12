@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request as data_request;
 
 use App\Services\UserService as UserService;
-
+use Exception;
+use App\Exceptions\Handler as Handler;
 
 class UserController extends Controller {
     protected $userService;
+    protected $handler;
 
-    public function __construct(UserService $userService) {
+    public function __construct(UserService $userService, Handler $handler) {
         $this-> userService = $userService;
+        $this-> handler = $handler;
     }
 
     public function findAll() {
@@ -38,12 +41,17 @@ class UserController extends Controller {
     }
 
     public function save(data_request $request) {
-        
-        $user["email"] = $request -> email; 
-        $user["name"] = $request -> name; 
-
-        return response()->json($this-> userService -> save($user));
+        try {
+            $user["email"] = $request -> email; 
+            $user["name"] = $request -> name; 
+            $result = $this-> userService -> save($user);
+            return response()->json($result);
+        } catch (Exception $e) {
+            $returnData = array(
+                'status' => 'error',
+                'message' => $e->getMessage()
+            );
+            return response()->json($returnData, 401);
+        }
     }
-
-
 }
