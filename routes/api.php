@@ -19,4 +19,5 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->get('/user', 'UserController@findAll');
 Route::middleware('api')->get('/user/{id}', 'UserController@findOne');
-Route::middleware('api')->post('/user/{id}', 'UserController@update');
+Route::middleware('api')->put('/user/{id}', 'UserController@update');
+Route::middleware('api')->delete('/user/{id}', 'UserController@destroy');

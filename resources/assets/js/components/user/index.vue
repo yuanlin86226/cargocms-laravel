@@ -42,7 +42,7 @@
                                             <a :href="'UpdateMember?id=' + user.id" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
                                                 <i class="fa fa-edit"></i>
                                             </a>      
-                                            <a class="btn btn-danger btn-simple btn-xs">
+                                            <a v-on:click="deleteUser(user, index)" class="btn btn-danger btn-simple btn-xs">
                                                 <i class="fa fa-times"></i>
                                             </a>
 
@@ -71,7 +71,7 @@
 
 
     export default {
-        mounted() {
+        mounted() {            
             this.getUsers(this.pagination.current_page);
         },
         data () {
@@ -96,6 +96,32 @@
                     success: (response) => {
                         _this.users = response.data;
                         _this.pagination = response;
+                    }
+                });
+            },
+            deleteUser(user, index) {
+                var _this = this;
+
+                swal({  title: "確定刪除?",
+                    text: "刪除使用者將無法復原!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "No",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },function(isConfirm){
+                    if (isConfirm){
+                        $.ajax({
+                            type: 'delete',
+                            url: `/api/user/${user.id}`,
+                            success: (response) => {
+                                _this.users.splice(index, 1);
+                                swal("deleted", "使用者已刪除", "info");
+
+                            }
+                        });
+                        
                     }
                 });
             }

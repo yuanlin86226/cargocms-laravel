@@ -80,7 +80,7 @@
             updateUser(id) {
                 var _this = this;
                 $.ajax({
-                    type: 'POST',
+                    type: 'PUT',
                     url: `/api/user/${id}`,
                     data: this.user,
                     success: (response) => {
