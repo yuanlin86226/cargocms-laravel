@@ -37,4 +37,13 @@ class UserController extends Controller {
         return response()->json($this-> userService -> destroy($id));
     }
 
+    public function save(data_request $request) {
+        
+        $user["email"] = $request -> email; 
+        $user["name"] = $request -> name; 
+
+        return response()->json($this-> userService -> save($user));
+    }
+
+
 }

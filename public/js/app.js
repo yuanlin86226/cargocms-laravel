@@ -896,9 +896,11 @@ window.Vue = __webpack_require__(36);
 
 Vue.component('example', __webpack_require__(37));
 Vue.component('user-index', __webpack_require__(40));
+Vue.component('user-create', __webpack_require__(58));
 Vue.component('user-show', __webpack_require__(43));
 Vue.component('user-edit', __webpack_require__(46));
 Vue.component('vue-pagination', __webpack_require__(49));
+
 var app = new Vue({
   el: '#app'
 });
@@ -42127,22 +42129,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
+
         this.getUser(id);
     },
     data: function data() {
         return {
-            user: {},
-            message: ""
+            user: {}
         };
     },
 
@@ -42164,7 +42162,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 data: this.user,
                 success: function success(response) {
                     _this.user = response;
-                    _this.message = "更新成功";
+                    swal("updated", "使用者已更新", "info");
                 }
             });
         }
@@ -42188,11 +42186,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "card"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "content"
-  }, [(_vm.message != '') ? _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-4 col-md-offset-4 text-center text-danger"
-  }, [_vm._v("\n                                " + _vm._s(_vm.message) + "\n                            ")])]) : _vm._e(), _vm._v(" "), _c('form', {
+  }, [_c('form', {
     attrs: {
       "method": "POST",
       "action": ""
@@ -42474,6 +42468,253 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(59),
+  /* template */
+  __webpack_require__(60),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/spooky/projects/gitlab/trunk-studio/cargocms-laravel/resources/assets/js/components/user/create.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] create.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d7bf81ba", Component.options)
+  } else {
+    hotAPI.reload("data-v-d7bf81ba", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            user: {}
+        };
+    },
+
+    methods: {
+        createUser: function createUser() {
+            var _this = this;
+            $.ajax({
+                type: 'POST',
+                url: "/api/user",
+                data: this.user,
+                success: function success(response) {
+
+                    swal({
+                        title: "created",
+                        text: "使用者已新增",
+                        type: "info"
+                    }, function () {
+                        window.location.href = '/member';
+                    });
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "container-fluid"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "card"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "content"
+  }, [_c('form', {
+    attrs: {
+      "method": "POST",
+      "action": ""
+    }
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Name")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.name),
+      expression: "user.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "name",
+      "placeholder": "Name"
+    },
+    domProps: {
+      "value": (_vm.user.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user.name = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.email),
+      expression: "user.email"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "email",
+      "placeholder": "Email"
+    },
+    domProps: {
+      "value": (_vm.user.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user.email = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-info btn-fill pull-right",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.createUser()
+      }
+    }
+  }, [_vm._v("Update Profile")]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  })])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "header"
+  }, [_c('h4', {
+    staticClass: "title"
+  }, [_vm._v("Insert Profile")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    staticClass: "btn btn-wd btn-default",
+    attrs: {
+      "type": "button",
+      "onclick": "history.back()"
+    }
+  }, [_c('span', {
+    staticClass: "btn-label"
+  }, [_c('i', {
+    staticClass: "fa fa-arrow-left"
+  })]), _vm._v("\n                                Back\n                            ")])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-d7bf81ba", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

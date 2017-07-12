@@ -22,5 +22,17 @@ class UserService {
   public function destroy($id) {
     return User::destroy($id);
   }
+  public function save($user) {
+    
+    $createdUser = User::create([
+      'name' => $user["name"], 
+      'email' => $user["email"],
+      'password' => bcrypt('123456'),
+      'remember_token' => 1
+    ]);
+
+    return $createdUser;
+  }
+
 
 }

@@ -8,11 +8,7 @@
                             <h4 class="title">Update Profile</h4>
                         </div>
                         <div class="content">
-                            <div v-if="message != ''" class="row">
-                                <div class="col-md-4 col-md-offset-4 text-center text-danger">
-                                    {{message}}
-                                </div>
-                            </div>
+
 
                             <form method="POST" action="">
                             
@@ -59,12 +55,12 @@
         mounted() {
             var url = new URL(window.location.href);
             var id = url.searchParams.get("id");
+            
             this.getUser(id);
         },
         data () {
             return {
-                user: {},
-                message: ""
+                user: {}
             }
         },
         methods: {
@@ -85,7 +81,7 @@
                     data: this.user,
                     success: (response) => {
                         _this.user = response;
-                        _this.message = "更新成功";
+                        swal("updated", "使用者已更新", "info");
                     }
                 });
             }
