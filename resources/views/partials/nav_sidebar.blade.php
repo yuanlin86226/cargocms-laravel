@@ -1,4 +1,4 @@
-    <div class="sidebar" data-color="orange" data-image="../resources/assets/img/full-screen-image-3.jpg">
+    <div class="sidebar" data-color="orange" data-image="/assets/img/full-screen-image-3.jpg">
         <!--
 
             Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
@@ -20,7 +20,7 @@
     	<div class="sidebar-wrapper">
             <div class="user">
                 <div class="photo">
-                    <img src="../resources/assets/img/default-avatar.png" />
+                    <img src="/assets/img/default-avatar.png" />
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
