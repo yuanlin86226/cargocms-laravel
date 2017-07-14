@@ -28,10 +28,10 @@ Route::get('/logout','AuthController@getLogout');
 Route::get('/dashboard','BoardController@getIndex');
 Route::get('/member','BoardController@getMember');
 
-Route::get('/ShowMember','MemberController@ShowMember');
-Route::get('/InsertMember','MemberController@InsertMember');
+// Route::get('/ShowMember','MemberController@ShowMember');
+// Route::get('/InsertMember','MemberController@InsertMember');
 Route::post('/postInsertMember','MemberController@postInsertMember');
-Route::get('/UpdateMember','MemberController@UpdateMember');
-Route::post('/postUpdateMember','MemberController@postUpdateMember');
-Route::get('/DeleteMember','MemberController@DeleteMember');
+// Route::get('/UpdateMember','MemberController@UpdateMember');
+// Route::post('/postUpdateMember','MemberController@postUpdateMember');
+// Route::get('/DeleteMember','MemberController@DeleteMember');
 //Route::post('DeleteMember/{id}', 'MemberController@DeleteMember');

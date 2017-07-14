@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width" />
 
         <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta id="token" name="csrf-token" content="{{ csrf_token() }}">
         <script>
         // rename myToken as you like
-        window.Laravel =  <?php echo json_encode([
+        window.myToken =  <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
         </script>
@@ -31,4 +31,6 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    
     

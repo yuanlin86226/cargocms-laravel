@@ -25,10 +25,10 @@ class MemberController extends Controller
 
     public function postInsertMember(data_request $request){
         if($request->name=="" || $request->email==""){
-            return Redirect::back()->withErrors(['msg'=>'請輸入完整']);
+            return response()->json( array( 'result' => false, 'message' => '請輸入完整資料') );
         }
         elseif(!preg_match("/.+@.+\.+.[a-zA-Z]{1,4}$/", $request->email)){
-            return Redirect::back()->withErrors(['msg'=>'信箱格式錯誤']);
+            return response()->json( array( 'result' => false, 'message' => '信箱格式錯誤') );
         }
         else{
             $mail = UserEloquent::where('email',$request->email)->get();
@@ -41,10 +41,10 @@ class MemberController extends Controller
                     'remember_token' => 1
                 ]);
 
-                return Redirect::back()->with('success','新增成功');
+                return response()->json( array( 'result' => true, 'message' => '成功建立 1 個人員') );
             }
             else{
-                return Redirect::back()->withErrors(['msg'=>'信箱已被註冊，無法使用']);
+                return response()->json( array( 'result' => false, 'message' => '信箱已被註冊，無法使用') );
             }       
         }
     }
