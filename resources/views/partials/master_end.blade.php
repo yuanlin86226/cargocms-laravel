@@ -59,9 +59,11 @@
 	<script src="/assets/js/demo.js"></script>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+     <!-- <script src="{{ asset('js/app.js') }}"></script>  -->
+     <!-- <script src="/js/app.js"></script>  -->
 
-	<script type="text/javascript">
+    <!-- Dashboard開啟通知 -->
+     <!-- <script type="text/javascript">
     	$(document).ready(function(){
 
         	demo.initDashboardPageCharts();
@@ -77,4 +79,4 @@
             });
 
     	});
-	</script>
+	</script>  -->

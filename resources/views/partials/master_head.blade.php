@@ -7,15 +7,8 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-        <!-- CSRF Token -->
-    <meta id="token" name="csrf-token" content="{{ csrf_token() }}">
-        <script>
-        // rename myToken as you like
-        window.myToken =  <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-        </script>
-
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Bootstrap core CSS     -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,6 +18,7 @@
     
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="/assets/css/demo.css" rel="stylesheet" />
+
     
         
     <!--     Fonts and icons     -->

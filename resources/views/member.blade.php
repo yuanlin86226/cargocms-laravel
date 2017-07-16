@@ -88,7 +88,7 @@
                             </div>
                             <div class="content">
                                 
-                                <form>
+                                <form method="POST" name="user_form">
                                     {{ csrf_field() }}
                                 
                                     <div class="row">
@@ -108,6 +108,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </form>
                                     <button type="button" class="btn btn-wd btn-default" v-on:click="cancel">
                                         <span class="btn-label">
                                             <i class="fa fa-arrow-left"></i>
@@ -116,7 +117,7 @@
                                     </button>
                                     <button type="submit" class="btn btn-info btn-fill pull-right" v-on:click="createUser">Insert Profile</button>
                                     <div class="clearfix"></div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -133,11 +134,6 @@
 
 <script type="text/javascript">
     var csrf_token = $('meta[name="csrf-token"]').attr('content');
-    
-    $('#btn-create').click(function(e) {
-        $('#panel-list').hide();
-        $('#panel-form').show();
-    });
 
     var panvelForm = new Vue({
         el: '#panel-form',
@@ -148,9 +144,13 @@
             }
         },
         methods: {
-            cancel: function(e) {
-                $('#panel-list').show();
+            close: function(e) {
                 $('#panel-form').hide();
+                $('#panel-list').show();
+            },
+            cancel: function(e) {
+                if (e) e.preventDefault();
+                this.close();
             },
             createUser: function createUser() {
                 var _this = this;
@@ -180,6 +180,12 @@
                 });
             }
         }
+    });
+
+    $('#btn-create').click(function(e) {
+        $('#panel-list').hide();
+        $('#panel-form').show();
+        document.user_form.reset();
     });
 </script>
 @stop

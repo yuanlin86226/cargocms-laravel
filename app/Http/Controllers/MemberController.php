@@ -25,10 +25,12 @@ class MemberController extends Controller
 
     public function postInsertMember(data_request $request){
         if($request->name=="" || $request->email==""){
-            return response()->json( array( 'result' => false, 'message' => '請輸入完整資料') );
+            // return Redirect::back()->withInput(['result' => false, 'message' => '請輸入完整資料']);
+            return response()->json(['result' => false, 'message' => '請輸入完整資料']);
         }
         elseif(!preg_match("/.+@.+\.+.[a-zA-Z]{1,4}$/", $request->email)){
-            return response()->json( array( 'result' => false, 'message' => '信箱格式錯誤') );
+            // return Redirect::back()->withInput(['result' => false, 'message' => '信箱格式錯誤']);
+            return response()->json(['result' => false, 'message' => '信箱格式錯誤']);
         }
         else{
             $mail = UserEloquent::where('email',$request->email)->get();
@@ -40,11 +42,12 @@ class MemberController extends Controller
                     'password' => bcrypt('123456'),
                     'remember_token' => 1
                 ]);
-
-                return response()->json( array( 'result' => true, 'message' => '成功建立 1 個人員') );
+                // return Redirect::back()->withInput(['result' => true, 'message' => '成功建立 1 個人員']);
+                return response()->json(['result' => true, 'message' => '成功建立 1 個人員']);
             }
             else{
-                return response()->json( array( 'result' => false, 'message' => '信箱已被註冊，無法使用') );
+                // return Redirect::back()->withInput(['result' => false, 'message' => '信箱已被註冊，無法使用']);
+                return response()->json(['result' => false, 'message' => '信箱已被註冊，無法使用']);
             }       
         }
     }
