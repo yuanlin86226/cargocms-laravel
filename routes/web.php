@@ -26,12 +26,4 @@ Route::post('/login','AuthController@postLogin');
 Route::get('/logout','AuthController@getLogout');
 
 Route::get('/dashboard','BoardController@getIndex');
-Route::get('/user','BoardController@getUser');
-
-// Route::get('/ShowMember','MemberController@ShowMember');
-// Route::get('/InsertMember','MemberController@InsertMember');
-// Route::post('/postInsertMember','MemberController@postInsertMember');
-// Route::get('/UpdateMember','MemberController@UpdateMember');
-// Route::post('/postUpdateMember','MemberController@postUpdateMember');
-// Route::get('/DeleteMember','MemberController@DeleteMember');
-//Route::post('DeleteMember/{id}', 'MemberController@DeleteMember');
+Route::get('/user','UserController@index');

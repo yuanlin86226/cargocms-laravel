@@ -8,6 +8,11 @@ use App\Services\UserService as UserService;
 use Exception;
 use App\Exceptions\Handler as Handler;
 
+use View;
+use Auth;
+use Redirect;
+
+
 class UserController extends Controller {
     protected $userService;
     protected $handler;
@@ -17,12 +22,20 @@ class UserController extends Controller {
         $this-> handler = $handler;
     }
 
+    public function index(){
+        if(Auth::check()){
+            return View::make('user');
+        }
+        else{
+            return Redirect::action('AuthController@getLogin');
+        }
+    }
+
     public function findAll() {
         return response()->json($this-> userService -> findAll());
     }
 
     public function findOne($id) {
-        error_log("=== $id ===" . $id);
         return response()->json($this-> userService -> findOne($id));
     }
 
@@ -44,11 +57,25 @@ class UserController extends Controller {
             );
             return response()->json($returnData);
         }
-        // error_log(json_encode($user));
+        
     }
 
     public function destroy($id) {
-        return response()->json($this-> userService -> destroy($id));
+        
+        try {
+            $this-> userService -> destroy($id);
+
+            $data["result"] = true;
+            $data["message"] = "使用者刪除成功";
+            return response()->json($data);
+            
+        } catch (Exception $e) {
+            $returnData = array(
+                'result' => false,
+                'message' => $e->getMessage()
+            );
+            return response()->json($returnData);
+        }
     }
 
     public function save(data_request $request) {

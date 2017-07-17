@@ -20,15 +20,6 @@ class BoardController extends Controller
     	}
     }
 
-    public function getUser(){
-        if(Auth::check()){
-            $users = UserEloquent::where('id','!=',Auth::user()->id)->orderby('id')->paginate(10);
 
-            return View::make('user',['users'=>$users]);
-        }
-        else{
-            return Redirect::action('AuthController@getLogin');
-        }
-    }
 
 }

@@ -3,6 +3,8 @@
 @section('title','後台人員管理')
 
 @section('content')
+
+@php ($REST_API = '/api/user/')
         <div class="content" id="panel-list">
             <div class="container-fluid">
 
@@ -23,39 +25,22 @@
                                     </button>
                                 </div>
                                 
-                                <table class="table">
+                                <table id="bootstrap-table" class="table" data-toggle="table" data-url="{{$REST_API}}" data-click-to-select="true">
                                     <thead>
-                                        <tr>
-                                            <th class="text-center">#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
+                                        <th data-field="state" data-width="50" data-checkbox="true"></th>
+                                        <th data-field="id" data-width="50" data-visible="false" class="text-center">ID</th>
+                                        <th data-field="name" data-sortable="true">Name</th>
+                                        <th data-field="email" data-visible="true" >email</th>
+                                        <th data-field="actions" data-width="150" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
                                     </thead>
-                                    <tbody>
-                                        <tr v-for="(user, index) in users">
-                                            <td class="text-center">@{{ index+1 }}</td>
-                                            <td>@{{ user.name }}</td>
-                                            <td>@{{ user.email }}</td>
-                                            <td class="td-actions text-right">
-                                                <a rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs" v-on:click="show(user.id)">
-                                                    <i class="fa fa-user"></i>
-                                                </a>
-                                                <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs" v-on:click="update(user.id)">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>      
-                                                <a rel="tooltip" title="Delete Profile" class="btn btn-danger btn-simple btn-xs" v-on:click="del(user.id)">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>   
-                                    </tbody> 
+                                    <tbody id="table-body"></tbody>
                                 </table>
 
-                                <div class="fixed-table-pagination">
+                                <!-- <div class="fixed-table-pagination">
                                     <div style="margin: 0px 20px;">
-                                        {{ $users->render() }}
+                                        
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="clearfix"></div>
 
@@ -120,7 +105,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                 <h4 id="panel_form_title" class="title"></h4> 
+                                <legend v-if="type==='update'">修改 使用者</legend>
+                                <legend v-if="type==='create'">新增 使用者</legend>
+
                             </div>
                             <div class="content">
                                 
@@ -152,7 +139,8 @@
                                         Back
                                     </button>
                                     
-                                    <button id="form_submit" type="submit" class="btn btn-info btn-fill pull-right" v-on:click="createUser">Insert Profile</button>
+                                    <button id="form_submit" type="submit" class="btn btn-info btn-fill pull-right" v-on:click="save">更新</button>
+                                    <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
                                     <div class="clearfix"></div>
                                 
                             </div>
@@ -171,93 +159,38 @@
 
 <script type="text/javascript">
     var csrf_token = $('meta[name="csrf-token"]').attr('content');
-    var apiUrl="http://127.0.0.1:8000/api/user";
 
-    var panelList = new Vue({
-        el: '#panel-list',
-        data:{
-            users:{}
-        },
-        mounted:function(){
-            this.load();
-        },
-        methods: {
-            load: function(e){
-                _this = this;
-                $.getJSON(apiUrl, function(data) {
-                    _this.users = data.data;
-                });
-            },
-            show: function(id){
-                $('#panel-list').hide();
-                $('#panel-view').show();
-                $('#panel-form').hide();
-                    
-                panelView.load(id);
-            },
-            update: function(id){
-                $('#panel-list').hide();
-                $('#panel-view').hide();
-                $('#panel-form').show();
-                    
-                _this = this;
-                document.getElementById("panel_form_title").innerText = 'Edit Profile';
-                document.getElementById("form_submit").innerText = 'Edit Profile';
-                panelForm.load(id);
-            },
-            del: function(id){
-                // console.log('我其實有點到');
-                swal({
-                    title: "確認刪除",
-                    text: "是否確定要刪除此筆資料？",
-                    type: "warning",
-                    showCancelButton: true
-                }, function(isConfirm) {
-                    if (isConfirm) {
-                        // Vue.http.delete(apiUrl + '/' + id);
-                        $.ajax({
-                            type: 'delete',
-                            url: "api/user/"+id,
-                            success: function() {
-                                swal({
-                                    title: "Deleted",
-                                    text: '成功刪除一本資料',
-                                    type: "success"
-                                }, function () {
-                                    location.reload();
-                                });
-                            }
-                        });
-                    }
-                });
-            }
-        }
-    });
+    var __REST_API_URL__ = '{{$REST_API}}';
     
     var panelView = new Vue({
         el: '#panel-view',
         data: {
-            row: {}
+            row: {
+                title: "Undefined"
+            }
         },
         methods: {
             done: function(e) {
                 if (e) e.preventDefault();
-                $('#panel-list').show();
                 $('#panel-view').hide();
-                $('#panel-form').hide();
+                $('#panel-list').show();
             },
             load: function(id) {
                 _this = this;
-                $.getJSON(apiUrl + '/' + id, function(data) {
-                    _this.row = data;
+                Vue.http.get(__REST_API_URL__ + id).then(function(response) {
+                    _this.row = response.body;
+                    Vue.http.get(__REST_API_URL__ + id + '/roles').then(function(response) {
+                        _this.row.roles = response.body;
+                    });
                 });
-            },
+            }
         }
     });
 
     var panelForm = new Vue({
         el: '#panel-form',
         data: {
+            type: 'create',
             row: {
                 _token: csrf_token,
             }
@@ -266,74 +199,55 @@
             close: function(e) {
                 $('#panel-form').hide();
                 $('#panel-list').show();
+
+                $table.bootstrapTable('refresh');
+            },
+            save: function(e) {
+                if (e) e.preventDefault();
+
+                _this = this;
+                
+                this.$validator.validateAll().then(function() {
+
+                    var cb_success = function(response) {
+                        notifyAfterHttpSuccess(response.body);
+                        if (response.body.result) {
+                            _this.close();
+                        }
+                    };
+
+                    if (_this.type == 'update') {
+                        Vue.http.put(__REST_API_URL__ + _this.row.id, _this.row).then(cb_success, notifyAfterHttpError);
+                    }
+                    else {
+                        Vue.http.post(__REST_API_URL__, _this.row).then(cb_success, notifyAfterHttpError);
+                    }
+
+                }).catch(function() {
+                    $('.form-control.error').first().focus();
+                });
             },
             cancel: function(e) {
                 if (e) e.preventDefault();
                 this.close();
             },
-            createUser: function createUser() {
-                var _this = this;
+            load: function(id) {
+                _this = this;
+                _this.type = id?'update':'create';
 
-                if(this._data.row.id){
-                    this.updateUser(this._data.row.id);
-                }else{
-                    $.ajax({
-                        type: 'POST',
-                        url: "api/user",
-                        data: this._data.row,
-                        dataType: "json",
-                        success: function(data) {
-                            // console.log(data);
-                            if(data.result){
-                                swal({
-                                    title: "created",
-                                    text: data.message,
-                                    type: "success"
-                                }, function () {
-                                    window.location.href = '/user';
-                                });
-                            }
-                            else{
-                                swal({
-                                    title: "failed",
-                                    text: data.message,
-                                    type: "info"
-                                });
-                            }
-                        }
-                    });
-                }
-                
-            },
-            load: function(id){
-                $.getJSON(apiUrl + '/' + id, function(data) {
-                    panelForm._data.row = data;
-                });
-            },
-            updateUser: function(id) {
-                var _this = this;
-                $.ajax({
-                    type: 'put',
-                    url: "api/user/"+id,
-                    data: this._data.row,
-                    dataType: "json",
-                    success: function(data) {
-                        if(data.result){
-                            swal({
-                                title: "updated",
-                                text: data.message,
-                                type: "success"
-                            }, function () {
-                                window.location.href = '/user';
-                            });
-                        }
-                        else{
-                            swal({
-                                title: "failed",
-                                text: data.message,
-                                type: "info"
-                            });
-                        }
+                _this.row = {};
+                _this.errors.clear();
+
+                Vue.http.get(__REST_API_URL__ + (id || 'new')).then(function(response) {
+                    _this.row = response.body;
+
+                    if (id) {
+                        Vue.http.get(__REST_API_URL__ + id + '/roles').then(function(response) {
+                            _this.row.roles = response.body;
+                        });
+                    }
+                    else {
+                        _this.row.roles = []
                     }
                 });
             }
@@ -343,9 +257,96 @@
     $('#btn-create').click(function(e) {
         $('#panel-list').hide();
         $('#panel-form').show();
-        document.user_form.reset();
-        document.getElementById("panel_form_title").innerText = 'Insert Profile';
+        panelForm.load();
     });
+
+
+
+    window.operateEvents = {
+        'click .view': function (e, value, row, index) {
+            $('#panel-list').hide();
+            $('#panel-view').show();
+            panelView.load(row.id);
+        },
+        'click .edit': function (e, value, row, index) {
+            $('#panel-list').hide();
+            $('#panel-form').show();
+            panelForm.load(row.id);
+        },
+        'click .remove': function (e, value, row, index) {
+            swal({title: "確認刪除",
+                text: "是否確定要刪除此筆資料？",
+                type: "warning",
+                showCancelButton: true
+            }, function(isConfirm) {
+                if (isConfirm) {
+                    $table.bootstrapTable('remove', {
+                        field: 'id',
+                        values: [row.id]
+                    });
+                    Vue.http.delete(__REST_API_URL__ + row.id).then(function(response) {
+                        notifyAfterHttpSuccess(response.body);
+                    }, function() {
+                        notifyAfterHttpError();
+                    });
+                }
+            });
+        }
+    };
+    var initDataTable = function($table) {
+        $table.bootstrapTable({
+            toolbar: ".toolbar",
+            striped: true,
+            sortOrder: 'desc',
+            sortName: 'updatedAt',
+            clickToSelect: true,
+            showRefresh: true,
+            search: true,
+            showToggle: false,
+            showColumns: true,
+            pagination: true,
+            searchAlign: 'right',
+            pageSize: 8,
+            clickToSelect: false,
+            pageList: [8, 10, 25, 50, 100],
+            formatShowingRows: function(pageFrom, pageTo, totalRows){
+                return "共 " + totalRows + " 筆 ";
+            },
+            formatRecordsPerPage: function(pageNumber){
+                return "每頁顯示 " + pageNumber + " 筆資料";
+            },
+            icons: {
+                refresh: 'fa fa-refresh',
+                toggle: 'fa fa-th-list',
+                columns: 'fa fa-columns',
+                detailOpen: 'fa fa-plus-circle',
+                detailClose: 'fa fa-minus-circle'
+            }
+        });
+        $(window).resize(function () {
+            $table.bootstrapTable('resetView');
+        });
+    };
+
+    var $table = $('#bootstrap-table');
+    
+    initDataTable($table);
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a rel="tooltip" title="檢視" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)">',
+                '<i class="fa fa-file-text-o"></i>',
+            '</a>',
+            '<a rel="tooltip" title="修改" class="btn btn-simple btn-warning btn-icon table-action edit" href="javascript:void(0)">',
+                '<i class="fa fa-edit"></i>',
+            '</a>',
+            '<a rel="tooltip" title="移除" class="btn btn-simple btn-danger btn-icon table-action remove" href="javascript:void(0)">',
+                '<i class="fa fa-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+
+
 </script>
 @stop
 
