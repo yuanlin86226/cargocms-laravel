@@ -43,7 +43,7 @@
                                                 <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs" v-on:click="update(user.id)">
                                                     <i class="fa fa-edit"></i>
                                                 </a>      
-                                                <a class="btn btn-danger btn-simple btn-xs">
+                                                <a rel="tooltip" title="Delete Profile" class="btn btn-danger btn-simple btn-xs" v-on:click="del(user.id)">
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
@@ -204,6 +204,32 @@
                 document.getElementById("panel_form_title").innerText = 'Edit Profile';
                 document.getElementById("form_submit").innerText = 'Edit Profile';
                 panelForm.load(id);
+            },
+            del: function(id){
+                // console.log('我其實有點到');
+                swal({
+                    title: "確認刪除",
+                    text: "是否確定要刪除此筆資料？",
+                    type: "warning",
+                    showCancelButton: true
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        // Vue.http.delete(apiUrl + '/' + id);
+                        $.ajax({
+                            type: 'delete',
+                            url: "api/user/"+id,
+                            success: function() {
+                                swal({
+                                    title: "Deleted",
+                                    text: '成功刪除一本資料',
+                                    type: "success"
+                                }, function () {
+                                    location.reload();
+                                });
+                            }
+                        });
+                    }
+                });
             }
         }
     });
@@ -249,7 +275,7 @@
                 var _this = this;
 
                 if(this._data.row.id){
-                    updateUser(this._data.row.id);
+                    this.updateUser(this._data.row.id);
                 }else{
                     $.ajax({
                         type: 'POST',
@@ -274,9 +300,6 @@
                                     type: "info"
                                 });
                             }
-                        },
-                        error: function(data){
-                            alert('error');
                         }
                     });
                 }
@@ -297,7 +320,7 @@
                     success: function(data) {
                         if(data.result){
                             swal({
-                                title: "created",
+                                title: "updated",
                                 text: data.message,
                                 type: "success"
                             }, function () {
@@ -311,9 +334,6 @@
                                 type: "info"
                             });
                         }
-                    },
-                    error: function(data){
-                        alert('error');
                     }
                 });
             }

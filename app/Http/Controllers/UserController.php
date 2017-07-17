@@ -27,15 +27,26 @@ class UserController extends Controller {
     }
 
     public function update($id, data_request $request) {
- 
-        $user["id"] = $id; 
-        $user["email"] = $request -> email; 
-        $user["name"] = $request -> name; 
+        try {
+            $user["id"] = $id; 
+            $user["email"] = $request -> email; 
+            $user["name"] = $request -> name;
+            $this-> userService -> update($user);
 
-        error_log(json_encode($user));
-
-        return response()->json($this-> userService -> update($user));
+            $data["result"] = true;
+            $data["message"] = "使用者修改成功";
+            return response()->json($data);
+            
+        } catch (Exception $e) {
+            $returnData = array(
+                'result' => false,
+                'message' => $e->getMessage()
+            );
+            return response()->json($returnData);
+        }
+        // error_log(json_encode($user));
     }
+
     public function destroy($id) {
         return response()->json($this-> userService -> destroy($id));
     }

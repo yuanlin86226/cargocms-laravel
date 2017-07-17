@@ -15,12 +15,27 @@ class UserService {
   }
   
   public function update($user) {
-    $updateUser =  User::find($user["id"]);
-    $updateUser -> name = $user["name"];
-    $updateUser -> email = $user["email"];
-    $updateUser -> save();
+    if($user['name'] == "" || $user['email'] == ""){
+      throw new Exception("請輸入完整資料");
+    }
+    elseif(!preg_match("/.+@.+\.+.[a-zA-Z]{1,4}$/", $user["email"])){
+      throw new Exception("信箱格式錯誤");
+    }
+    else{
+      $mail = User::where('id','!=',$user['id'])->where('email',$user["email"])->get();
 
-    return $updateUser;
+      if(count($mail)==0){
+        $updateUser =  User::find($user["id"]);
+        $updateUser -> name = $user["name"];
+        $updateUser -> email = $user["email"];
+        $updateUser -> save();
+
+        return $updateUser;
+      }
+      else{
+        throw new Exception("信箱已被註冊，無法使用");
+      }
+    }
   }
   
   public function destroy($id) {
