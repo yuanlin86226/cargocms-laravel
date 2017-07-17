@@ -7,12 +7,13 @@ use Exception;
 class UserService {
 
   public function findAll() {
-    return User::paginate(5);
+    return User::paginate(10);
   }
 
   public function findOne($id) {
     return User::find($id);
   }
+  
   public function update($user) {
     $updateUser =  User::find($user["id"]);
     $updateUser -> name = $user["name"];
@@ -21,22 +22,35 @@ class UserService {
 
     return $updateUser;
   }
+  
   public function destroy($id) {
     return User::destroy($id);
   }
+  
   public function save($user) {
 
-    if($user["email"] == "") 
-      throw new Exception("email 不允許空白");
-    
-    $createdUser = User::create([
-      'name' => $user["name"], 
-      'email' => $user["email"],
-      'password' => bcrypt('123456'),
-      'remember_token' => 1
-    ]);
+    if($user["email"] == "" || $user['name']=="") {
+      throw new Exception("請輸入完整資料");
+    }
+    elseif(!preg_match("/.+@.+\.+.[a-zA-Z]{1,4}$/", $user["email"])){
+      throw new Exception("信箱格式錯誤");
+    }
+    else{
+      $mail = User::where('email',$user["email"])->get();
 
-    return $createdUser;
+      if( count($mail)==0 ){
+        $createdUser = User::create([
+          'name' => $user["name"], 
+          'email' => $user["email"],
+          'password' => bcrypt('123456'),
+          'remember_token' => 1
+        ]);
+
+        return $createdUser;
+      }else{
+        throw new Exception("信箱已被註冊，無法使用");
+      }
+    }
   }
 
 

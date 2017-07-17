@@ -17,10 +17,6 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-<<<<<<< HEAD
-//Route::middleware('api')->post('/member','MemberController@postInsertMember');
-=======
->>>>>>> d816d01c6801be85d418f103e28df5fcef2b79c5
 Route::middleware('api')->get('/user', 'UserController@findAll');
 Route::middleware('api')->post('/user', 'UserController@save');
 Route::middleware('api')->get('/user/{id}', 'UserController@findOne');
