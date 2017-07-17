@@ -44,8 +44,11 @@ class UserController extends Controller {
         try {
             $user["email"] = $request -> email; 
             $user["name"] = $request -> name; 
-            $result = $this-> userService -> save($user);
-            return response()->json($result);
+            $this-> userService -> save($user);
+
+            $data["result"] = true;
+            $data["message"] = "使用者建立成功";
+            return response()->json($data);
         } catch (Exception $e) {
             $returnData = array(
                 'status' => 'error',

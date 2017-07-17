@@ -156,10 +156,11 @@
                 var _this = this;
                 $.ajax({
                     type: 'POST',
-                    url: "postInsertMember",
+                    url: "api/user",
                     data: this._data.row,
                     dataType: "json",
                     success: function(data) {
+                        console.log(data);
                         if(data.result){
                             swal({
                                 title: "created",
