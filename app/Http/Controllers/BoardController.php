@@ -20,7 +20,7 @@ class BoardController extends Controller
     	}
     }
 
-    public function getMember(){
+    public function getUser(){
         if(Auth::check()){
             $users = UserEloquent::where('id','!=',Auth::user()->id)->orderby('id')->paginate(10);
 

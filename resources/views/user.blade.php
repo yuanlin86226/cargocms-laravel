@@ -10,7 +10,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Member Table</h4>
+                                <h4 class="title">user Table</h4>
                                 <p class="category">Here is a subtitle for this table</p>
                             </div>
                             <div class="content table-responsive table-full-width">
@@ -42,10 +42,17 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td class="td-actions text-right">
 
+<<<<<<< HEAD:resources/views/user.blade.php
                                                     <a href="ShowMember?id={{ $user->id }}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-user"></i>
                                                     </a>
                                                     <a href="UpdateMember?id={{ $user->id }}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+=======
+                                                    <a href="Showuser?id={{ $user->id }}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                                                        <i class="fa fa-user"></i>
+                                                    </a>
+                                                    <a href="Updateuser?id={{ $user->id }}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+>>>>>>> d816d01c6801be85d418f103e28df5fcef2b79c5:resources/views/user.blade.php
                                                         <i class="fa fa-edit"></i>
                                                     </a>      
                                                     <a class="btn btn-danger btn-simple btn-xs" onclick="del({{$user->id}})">
@@ -156,10 +163,15 @@
                 var _this = this;
                 $.ajax({
                     type: 'POST',
+<<<<<<< HEAD:resources/views/user.blade.php
                     url: "user",
+=======
+                    url: "api/user",
+>>>>>>> d816d01c6801be85d418f103e28df5fcef2b79c5:resources/views/user.blade.php
                     data: this._data.row,
                     dataType: "json",
                     success: function(data) {
+                        console.log(data);
                         if(data.result){
                             swal({
                                 title: "created",

@@ -26,7 +26,11 @@ Route::post('/login','AuthController@postLogin');
 Route::get('/logout','AuthController@getLogout');
 
 Route::get('/dashboard','BoardController@getIndex');
+<<<<<<< HEAD
 Route::get('/user','BoardController@getMember');
+=======
+Route::get('/user','BoardController@getUser');
+>>>>>>> d816d01c6801be85d418f103e28df5fcef2b79c5
 
 // Route::get('/ShowMember','MemberController@ShowMember');
 // Route::get('/InsertMember','MemberController@InsertMember');
