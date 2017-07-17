@@ -26,7 +26,7 @@ Route::post('/login','AuthController@postLogin');
 Route::get('/logout','AuthController@getLogout');
 
 Route::get('/dashboard','BoardController@getIndex');
-Route::get('/member','BoardController@getMember');
+Route::get('/user','BoardController@getUser');
 
 // Route::get('/ShowMember','MemberController@ShowMember');
 // Route::get('/InsertMember','MemberController@InsertMember');

@@ -38,12 +38,12 @@
             </div>
 
             <ul class="nav">
-                @if( strpos($_SERVER['REQUEST_URI'],'member') )
+                @if( strpos($_SERVER['REQUEST_URI'],'user') )
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a href="member">
+                    <a href="user">
                         <i class="pe-7s-users"></i>
                         <p>會員管理</p>
                     </a>

@@ -10,7 +10,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Member Table</h4>
+                                <h4 class="title">user Table</h4>
                                 <p class="category">Here is a subtitle for this table</p>
                             </div>
                             <div class="content table-responsive table-full-width">
@@ -32,23 +32,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if( count($members)==0 )
+                                        @if( count($users)==0 )
                                             <tr colspan="3"><td>目前尚無資料</td></tr>
                                         @else
-                                            @foreach( $members as $index => $member)
+                                            @foreach( $users as $index => $user)
                                             <tr>
                                                 <td class="text-center">{{ $index+1 }}</td>
-                                                <td>{{ $member->name }}</td>
-                                                <td>{{ $member->email }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
                                                 <td class="td-actions text-right">
 
-                                                    <a href="ShowMember?id={{ $member->id }}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                                                    <a href="Showuser?id={{ $user->id }}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-user"></i>
                                                     </a>
-                                                    <a href="UpdateMember?id={{ $member->id }}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                                                    <a href="Updateuser?id={{ $user->id }}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
                                                     </a>      
-                                                    <a class="btn btn-danger btn-simple btn-xs" onclick="del({{$member->id}})">
+                                                    <a class="btn btn-danger btn-simple btn-xs" onclick="del({{$user->id}})">
                                                         <i class="fa fa-times"></i>
                                                     </a>
 
@@ -62,7 +62,7 @@
 
                                 <div class="fixed-table-pagination">
                                     <div style="margin: 0px 20px;">
-                                        {{ $members->render() }}
+                                        {{ $users->render() }}
                                     </div>
                                 </div>
 
@@ -167,7 +167,7 @@
                                 text: data.message,
                                 type: "success"
                             }, function () {
-                                window.location.href = '/member';
+                                window.location.href = '/user';
                             });
                         }
                         else{
