@@ -22,9 +22,9 @@ class BoardController extends Controller
 
     public function getMember(){
         if(Auth::check()){
-            $members = UserEloquent::where('id','!=',Auth::user()->id)->orderby('id')->paginate(10);
+            $users = UserEloquent::where('id','!=',Auth::user()->id)->orderby('id')->paginate(10);
 
-            return View::make('member',['members'=>$members]);
+            return View::make('user',['users'=>$users]);
         }
         else{
             return Redirect::action('AuthController@getLogin');

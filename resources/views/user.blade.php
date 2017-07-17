@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','套版-後台管理系統')
+@section('title','後台人員管理')
 
 @section('content')
         <div class="content" id="panel-list">
@@ -32,23 +32,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if( count($members)==0 )
+                                        @if( count($users)==0 )
                                             <tr colspan="3"><td>目前尚無資料</td></tr>
                                         @else
-                                            @foreach( $members as $index => $member)
+                                            @foreach( $users as $index => $user)
                                             <tr>
                                                 <td class="text-center">{{ $index+1 }}</td>
-                                                <td>{{ $member->name }}</td>
-                                                <td>{{ $member->email }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
                                                 <td class="td-actions text-right">
 
-                                                    <a href="ShowMember?id={{ $member->id }}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                                                    <a href="ShowMember?id={{ $user->id }}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-user"></i>
                                                     </a>
-                                                    <a href="UpdateMember?id={{ $member->id }}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                                                    <a href="UpdateMember?id={{ $user->id }}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
                                                     </a>      
-                                                    <a class="btn btn-danger btn-simple btn-xs" onclick="del({{$member->id}})">
+                                                    <a class="btn btn-danger btn-simple btn-xs" onclick="del({{$user->id}})">
                                                         <i class="fa fa-times"></i>
                                                     </a>
 
@@ -62,7 +62,7 @@
 
                                 <div class="fixed-table-pagination">
                                     <div style="margin: 0px 20px;">
-                                        {{ $members->render() }}
+                                        {{ $users->render() }}
                                     </div>
                                 </div>
 
@@ -156,7 +156,7 @@
                 var _this = this;
                 $.ajax({
                     type: 'POST',
-                    url: "postInsertMember",
+                    url: "user",
                     data: this._data.row,
                     dataType: "json",
                     success: function(data) {
@@ -166,7 +166,7 @@
                                 text: data.message,
                                 type: "success"
                             }, function () {
-                                window.location.href = '/member';
+                                window.location.href = '/user';
                             });
                         }
                         else{

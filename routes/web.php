@@ -26,11 +26,11 @@ Route::post('/login','AuthController@postLogin');
 Route::get('/logout','AuthController@getLogout');
 
 Route::get('/dashboard','BoardController@getIndex');
-Route::get('/member','BoardController@getMember');
+Route::get('/user','BoardController@getMember');
 
 // Route::get('/ShowMember','MemberController@ShowMember');
 // Route::get('/InsertMember','MemberController@InsertMember');
-Route::post('/postInsertMember','MemberController@postInsertMember');
+// Route::post('/postInsertMember','MemberController@postInsertMember');
 // Route::get('/UpdateMember','MemberController@UpdateMember');
 // Route::post('/postUpdateMember','MemberController@postUpdateMember');
 // Route::get('/DeleteMember','MemberController@DeleteMember');
