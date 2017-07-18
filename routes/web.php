@@ -22,12 +22,12 @@
 
 
 Route::get('/','AuthController@login');
-Route::post('/login','AuthController@login');
+Route::post('/login','AuthController@postLogin');
 Route::get('/logout','AuthController@logout');
 
 Route::get('/dashboard','BoardController@index');
 Route::get('/user','UserController@index');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
