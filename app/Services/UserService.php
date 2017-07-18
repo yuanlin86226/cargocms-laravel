@@ -7,7 +7,7 @@ use Exception;
 class UserService {
 
   public function findAll() {
-    return User::paginate(10);
+    return User::all();
   }
 
   public function findOne($id) {
