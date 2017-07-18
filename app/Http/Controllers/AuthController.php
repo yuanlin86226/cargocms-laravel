@@ -16,21 +16,23 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request){
-        $authData = $request->only(['email','password']);
+        $authData = $request->only(['username', 'password']);
 
-        if($request->email=="" || $request->password==""){
+        // http://laraveldaily.com/laravel-login-email-username-one-field/
+
+        if (empty($request->username) || empty($request->password)) {
         	return Redirect::back()->withErrors(['msg'=>'請輸入完整資料']);
         }
-        elseif (Auth::attempt($authData,$request->remember)) {
+        elseif (Auth::attempt($authData, $request->remember)) {
             return Redirect::action('BoardController@getIndex');
         }
-        else{
-        	$user = UserEloquent::where('email',$request->email)->get();
+        else {
+        	$user = UserEloquent::where('username', $request->username)->get();
 
-        	if(count($user)==0){
+        	if (count($user)==0) {
         		return Redirect::back()->withErrors(['msg'=>'查無此帳號'])->withInput($request->except('password'));
         	}
-        	else{
+        	else {
         		return Redirect::back()->withErrors(['msg'=>'密碼錯誤'])->withInput($request->except('password'));
         	}
         }
