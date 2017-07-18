@@ -27,3 +27,7 @@ Route::get('/logout','AuthController@getLogout');
 
 Route::get('/dashboard','BoardController@getIndex');
 Route::get('/user','UserController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
