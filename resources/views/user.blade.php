@@ -57,6 +57,39 @@
                                     </div>
                                 </div>
 
+                                <div class="fixed-table-pagination">
+                                    <div style="margin: 0px 20px;">
+                                        <ul class="pagination">
+
+                                            <li class="page-first">
+                                                <a id="first_page">«</a>
+                                            </li>
+                                            <li class="page-pre">
+                                                <a>‹</a>
+                                            </li>
+
+
+                                            <!-- <li class="page-number active">
+                                                <a href="javascript:void(0)">1</a>
+                                            </li>
+                                            <li class="page-number">
+                                                <a href="javascript:void(0)">2</a>
+                                            </li>
+                                            <li class="page-number">
+                                                <a href="javascript:void(0)">3</a>
+                                            </li> -->
+
+                                            <li class="page-next">
+                                                <a v-bind:href="pages.next_page_url">›</a>
+                                            </li>
+                                            <li class="page-last">
+                                                <a id="last_page">»</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="clearfix"></div>
 
                             </div>
@@ -186,7 +219,10 @@
                 _this = this;
                 $.getJSON(apiUrl, function(data) {
                     _this.users = data.data;
+                    _this.pages = data;
                 });
+
+                str="<li class='page-first disabled'><a id='first_page'>«</a></li>";
             },
             show: function(id){
                 $('#panel-list').hide();
@@ -221,7 +257,7 @@
                             success: function() {
                                 swal({
                                     title: "Deleted",
-                                    text: '成功刪除一本資料',
+                                    text: '成功刪除一筆資料',
                                     type: "success"
                                 }, function () {
                                     location.reload();
