@@ -30,7 +30,11 @@ class UserService {
   }
   
   public function destroy($id) {
-    return User::destroy($id);
+    try {
+      return User::destroy($id);
+    } catch (Exception $e) {
+      throw $e;
+    }
   }
   
   public function save($user) {
