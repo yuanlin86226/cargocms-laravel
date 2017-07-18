@@ -27,7 +27,7 @@ class UserController extends Controller {
             return View::make('user');
         }
         else{
-            return Redirect::action('AuthController@getLogin');
+            return Redirect::action('AuthController@login');
         }
     }
 
