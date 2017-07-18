@@ -11,7 +11,7 @@ use View;
 
 class AuthController extends Controller
 {
-    public function getLogin(){
+    public function login(){
     	return View::make('login');
     }
 
@@ -24,7 +24,7 @@ class AuthController extends Controller
         	return Redirect::back()->withErrors(['msg'=>'請輸入完整資料']);
         }
         elseif (Auth::attempt($authData, $request->remember)) {
-            return Redirect::action('BoardController@getIndex');
+            return Redirect::action('BoardController@index');
         }
         else {
         	$user = UserEloquent::where('username', $request->username)->get();
@@ -38,7 +38,7 @@ class AuthController extends Controller
         }
     }
 
-    public function getLogout(){
+    public function logout(){
     	Auth::logout();
     	return Redirect::action('AuthController@getLogin');
     }

@@ -11,12 +11,12 @@ use Redirect;
 
 class BoardController extends Controller
 {
-    public function getIndex(){
+    public function index(){
     	if(Auth::check()){
     		return View::make('dashboard');
     	}
     	else{
-    		return Redirect::action('AuthController@getLogin');
+    		return Redirect::action('AuthController@login');
     	}
     }
 

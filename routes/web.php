@@ -21,11 +21,11 @@
 
 
 
-Route::get('/','AuthController@getLogin');
-Route::post('/login','AuthController@postLogin');
-Route::get('/logout','AuthController@getLogout');
+Route::get('/','AuthController@login');
+Route::post('/login','AuthController@login');
+Route::get('/logout','AuthController@logout');
 
-Route::get('/dashboard','BoardController@getIndex');
+Route::get('/dashboard','BoardController@index');
 Route::get('/user','UserController@index');
 
 Auth::routes();
