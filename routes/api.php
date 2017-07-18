@@ -17,8 +17,8 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::middleware('api')->get('/user', 'UserController@findAll');
-Route::middleware('api')->post('/user', 'UserController@save');
-Route::middleware('api')->get('/user/{id}', 'UserController@findOne');
-Route::middleware('api')->put('/user/{id}', 'UserController@update');
-Route::middleware('api')->delete('/user/{id}', 'UserController@destroy');
+Route::middleware('api')->get('/admin/user', 'admin\UserController@findAll');
+Route::middleware('api')->post('/admin/user', 'admin\UserController@save');
+Route::middleware('api')->get('/admin/user/{id}', 'admin\UserController@findOne');
+Route::middleware('api')->put('/admin/user/{id}', 'admin\UserController@update');
+Route::middleware('api')->delete('/admin/user/{id}', 'admin\UserController@destroy');

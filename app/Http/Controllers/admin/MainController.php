@@ -1,19 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\User as UserEloquent;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
 
 use View;
 use Auth;
 use Redirect;
 
-class BoardController extends Controller
+class MainController extends Controller
 {
     public function index(){
     	if(Auth::check()){
-    		return View::make('dashboard');
+    		return View::make('admin/index');
     	}
     	else{
     		return Redirect::action('AuthController@login');

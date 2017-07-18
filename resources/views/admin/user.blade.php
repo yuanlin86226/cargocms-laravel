@@ -4,7 +4,7 @@
 
 @section('content')
 
-@php ($REST_API = '/api/user/')
+@php ($REST_API = '/api/admin/user/')
         <div class="content" id="panel-list">
             <div class="container-fluid">
 

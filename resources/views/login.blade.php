@@ -8,7 +8,7 @@
                 <div class="row">                   
                     <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
 
-                        <form method="POST" action="{{ action('AuthController@postLogin') }}">
+                        <form method="POST" action="{{ action('AuthController@login') }}">
                         
                         {{ csrf_field() }}
                             <div class="card card-hidden">

@@ -21,12 +21,14 @@
 
 
 
-Route::get('/','AuthController@login');
-Route::post('/login','AuthController@postLogin');
+Route::get('/','AuthController@index');
+Route::get('/login','AuthController@index');
+
+Route::post('/login','AuthController@login');
 Route::get('/logout','AuthController@logout');
 
-Route::get('/dashboard','BoardController@index');
-Route::get('/user','UserController@index');
+Route::get('/index','admin\MainController@index');
+Route::get('/user','admin\UserController@index');
 
 // Auth::routes();
 
