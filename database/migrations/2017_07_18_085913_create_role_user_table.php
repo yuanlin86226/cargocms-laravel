@@ -28,6 +28,6 @@ class CreateRoleUserTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('role_user');
     }
 }

@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
-use App\User;
+use App\User as UserEloquent;
 use App\Role;
-
 
 class UserTableSeeder extends Seeder
 {
@@ -25,9 +24,9 @@ class UserTableSeeder extends Seeder
         	'remember_token' => str_random(10)
         ]);
 
-        $user = factory(App\User::class, 20)->create();
-        
         $role_admin = Role::where('name', 'admin')->first();
-        $admin->roles()->attach($role_admin);
+        $user->roles()->attach($role_admin);
+
+        $user = factory(App\User::class, 20)->create();        
     }
 }

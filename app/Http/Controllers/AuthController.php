@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function postLogin(Request $request){
         $authData = $request->only(['username', 'password']);
 
-        // TODO http://laraveldaily.com/laravel-login-email-username-one-field/
+        // http://laraveldaily.com/laravel-login-email-username-one-field/
 
         if (empty($request->username) || empty($request->password)) {
         	return Redirect::back()->withErrors(['msg'=>'請輸入完整資料']);
@@ -27,7 +27,7 @@ class AuthController extends Controller
             return Redirect::action('BoardController@getIndex');
         }
         else {
-        	$user = UserEloquent::where('email', $request->email)->get();
+        	$user = UserEloquent::where('username', $request->username)->get();
 
         	if (count($user)==0) {
         		return Redirect::back()->withErrors(['msg'=>'查無此帳號'])->withInput($request->except('password'));
