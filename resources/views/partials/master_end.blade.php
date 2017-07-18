@@ -1,6 +1,11 @@
     
     <!--   Vue.js   -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+    <script src="/lib/vue/dist/vue.min.js"></script>
+    <script src="/lib/vue-resource/dist/vue-resource.min.js"></script>
+    <script src="/lib/vee-validate/dist/vee-validate.min.js"></script>
+    <script src="/lib/vee-validate/dist/locale/zh_TW.js"></script>
+    <script src="/lib/moment/min/moment.min.js"></script>
+
     
 
     <!--   Core JS Files and PerfectScrollbar library inside jquery.ui   -->
@@ -59,9 +64,11 @@
 	<script src="/assets/js/demo.js"></script>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+     <!-- <script src="{{ asset('js/app.js') }}"></script>  -->
+     <!-- <script src="/js/app.js"></script>  -->
 
-	<script type="text/javascript">
+    <!-- Dashboard開啟通知 -->
+     <!-- <script type="text/javascript">
     	$(document).ready(function(){
 
         	demo.initDashboardPageCharts();
@@ -77,4 +84,63 @@
             });
 
     	});
+    </script>  -->
+    
+    <script type="text/javascript">
+
+        var notifyAfterHttpSuccess = function(response) {
+            if (!response) return;
+            var body = response.body || response;
+            if (body && body.message) {
+                $.notify({
+                    message: body.message
+                }, {
+                    type: body.type || (body.result?'success':'danger'),
+                    timer: 1500
+                });
+            }
+        };
+
+        var notifyAfterHttpError = function(response) {
+            var message = response?'操作失敗(代碼: ' + response.status + ' - ' + response.statusText + ')':'操作失敗';
+            $.notify({
+                message: message
+            }, {
+                type: 'danger',
+                timer: 2000
+            });
+        };
+
+        var getUrlParameter = function(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        Vue.use(VeeValidate, {locale: 'zh_TW'}); // good to go. 
+
+        // Setup Vue Filters
+        Vue.filter('formatDate', function(value) {
+            if (!value) return value;
+            return moment(String(value)).format('YYYY/MM/DD HH:mm:ss');
+        });
+
+        Vue.filter('formatBasename', function(value) {
+            if (!value) return value;
+            return value.split('/').pop();
+        });
+
+        Vue.filter('showdown', function(value) {
+            if (!value) return value;
+            return showdown.makeHtml(value);
+        });
 	</script>

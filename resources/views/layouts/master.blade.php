@@ -23,4 +23,5 @@
     </div>
 </body>
 @include('partials.master_end')
+@yield('script')
 </html>
