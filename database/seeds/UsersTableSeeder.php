@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
 
         $user = UserEloquent::create([
         	'name' => 'John Doe',
+            'username' => 'admin',
         	'email' => 'admin@example.com',
         	'password' => bcrypt('admin'),
         	'remember_token' => str_random(10)
