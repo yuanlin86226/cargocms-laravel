@@ -12,7 +12,7 @@ composer global require "laravel/installer=~1.1"
 add path to your rc file: `~/.composer/vendor/bin`
 ```
 
-套件安裝
+## 套件安裝
 
 ```
 composer update
@@ -21,7 +21,9 @@ composer install
 
 ## 建立 model
 
-`php artisan make:model User --migration`
+```
+php artisan make:model User --migration
+```
 
 ## 建立資料庫
 
@@ -59,12 +61,20 @@ npm i
 npm run dev
 ```
 
-或是 `npm run watch`
+或是
+
+```
+npm run watch
+```
 
 vue 檔案位置
 
-`resources/assets`
+```
+resources/assets
+```
 
 npm run dev 執行完之後產出檔案
 
-`public/js/app.js`
+```
+public/js/app.js
+```
