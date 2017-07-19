@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as data_request;
 
@@ -12,44 +13,47 @@ use View;
 use Auth;
 use Redirect;
 
-
-class UserController extends Controller {
+class UserController extends Controller
+{
     protected $userService;
     protected $handler;
 
-    public function __construct(UserService $userService, Handler $handler) {
+    public function __construct(UserService $userService, Handler $handler)
+    {
         $this-> userService = $userService;
         $this-> handler = $handler;
     }
 
-    public function index(){
-        if(Auth::check()){
+    public function index()
+    {
+        if (Auth::check()) {
             return View::make('admin/User');
-        }
-        else{
+        } else {
             return Redirect::action('AuthController@login');
         }
     }
 
-    public function findAll() {
+    public function findAll()
+    {
         return response()->json($this-> userService -> findAll());
     }
 
-    public function findOne($id) {
+    public function findOne($id)
+    {
         return response()->json($this-> userService -> findOne($id));
     }
 
-    public function update($id, data_request $request) {
+    public function update($id, data_request $request)
+    {
         try {
-            $user["id"] = $id; 
-            $user["email"] = $request -> email; 
+            $user["id"] = $id;
+            $user["email"] = $request -> email;
             $user["name"] = $request -> name;
             $this-> userService -> update($user);
 
             $data["result"] = true;
             $data["message"] = "使用者修改成功";
             return response()->json($data);
-            
         } catch (Exception $e) {
             $returnData = array(
                 'result' => false,
@@ -57,18 +61,16 @@ class UserController extends Controller {
             );
             return response()->json($returnData);
         }
-        
     }
 
-    public function destroy($id) {
-        
+    public function destroy($id)
+    {
         try {
             $this-> userService -> destroy($id);
 
             $data["result"] = true;
             $data["message"] = "使用者刪除成功";
             return response()->json($data);
-            
         } catch (Exception $e) {
             $returnData = array(
                 'result' => false,
@@ -78,11 +80,12 @@ class UserController extends Controller {
         }
     }
 
-    public function save(data_request $request) {
+    public function save(data_request $request)
+    {
         try {
             $user['id'] = "";
-            $user["email"] = $request -> email; 
-            $user["name"] = $request -> name; 
+            $user["email"] = $request -> email;
+            $user["name"] = $request -> name;
             $this-> userService -> save($user);
 
             $data["result"] = true;

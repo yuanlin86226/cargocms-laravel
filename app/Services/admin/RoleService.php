@@ -2,10 +2,10 @@
 
 namespace App\Services\Admin;
 
-use App\User as User;
+use App\Role as Role;
 use Exception;
 
-class UserService
+class RoleService
 {
     public function findAll()
     {

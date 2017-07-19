@@ -1,26 +1,18 @@
 @extends('layouts.admin')
 
 @section('title','後台人員管理')
-@section('page_title','後台選單管理')
+@section('page_title','後台角色管理')
 
 @section('content')
 
-@php ($REST_API = '/api/admin/menu/')
+@php ($REST_API = '/api/admin/role/')
         <div class="content" id="panel-list">
             <div class="container-fluid">
 
-            <ol id="breadcrumb" class="breadcrumb" v-cloak>
-                <!-- <li v-if="">頂層</li> -->
-                <li v-if=""><a href="/admin/menu">頂層</a></li>
-                <!-- <li v-if=""><a href="/admin/SystemMenu">頂層</a></li>
-                <li v-if="" class="active"></li> -->
-            </ol>
-            
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="content table-responsive table-full-width">
-
                                 <div class="toolbar">
                                     <button id="btn-create" class="btn btn-default" type="button" title="新增一篇文章">
                                         <i class="glyphicon fa fa-plus"></i>
@@ -36,14 +28,10 @@
                                 
                                 <table id="bootstrap-table" class="table" data-toggle="table" data-url="{{$REST_API}}" data-click-to-select="ture">
                                     <thead>
-                                        <th data-field="state" data-width="50" data-checkbox="true"></th>
-                                        <th data-field="id" data-width="50" data-visible="false" class="text-center">ID</th>
-                                        <th data-field="" data-sortable="true">圖示</th>
-                                        <th data-field="" data-visible="true">標題</th>
-                                        <th data-field="" data-sortable="true">位址</th>
-                                        <th data-field="" data-visible="false">建立日期</th>
-                                        <th data-field="" data-visible="false">建立日期</th>
-                                        <th data-field="actions" data-width="200" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
+                                        <th data-width="50" data-field="state" data-checkbox="true"></th>
+                            <th data-width="300" data-field="id" data-visible="false">ID</th>
+                            <th data-field="name" data-sortable="true">角色名稱</th>
+                                        <th data-field="actions" data-width="150" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
                                     </thead>
                                     <tbody id="table-body"></tbody>
                                 </table>
@@ -64,49 +52,31 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">檢視</h4>
+                                <legend class="title">檢視</legend>
                             </div>
+
                             <div class="content">
 
                                 <form class="form-horizontal">
                                     <fieldset>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">名稱</label>
+                                            <label class="col-sm-2 control-label">ID</label>
                                             <div class="col-sm-10">
                                                 <p class="form-control-static"></p>
                                             </div>
                                         </div>
                                     </fieldset>
-
                                     <fieldset>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">位址</label>
+                                            <label class="col-sm-2 control-label">角色名稱</label>
                                             <div class="col-sm-10">
                                                 <p class="form-control-static"></p>
                                             </div>
                                         </div>
                                     </fieldset>
-
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">建立日期</label>
-                                            <div class="col-sm-10">
-                                                <p class="form-control-static"></p>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">更新日期</label>
-                                            <div class="col-sm-10">
-                                                <p class="form-control-static"></p>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
                                     <fieldset>
                                         <div class="form-group">
                                             <label class="col-md-2"></label>
@@ -115,10 +85,10 @@
                                             </div>
                                         </div>
                                     </fieldset>
-                                
                                 </form>
-                            
+
                                 <div class="clearfix"></div>
+
                             </div>
                         </div>
                     </div>
@@ -134,75 +104,42 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <legend v-if="type==='update'">修改 選單</legend>
-                                <legend v-if="type==='create'">新增 選單</legend>
+                                <legend v-if="type==='update'">修改 使用者</legend>
+                                <legend v-if="type==='create'">新增 使用者</legend>
+
                             </div>
                             <div class="content">
                                 
-                                <form  method="POST" name="user_form" class="form-horizontal">
-
+                                <form method="POST" name="user_form" class="form-horizontal">
+                                    {{ csrf_field() }}
+                                
                                     <fieldset>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">預覽</label>
+                                            <label class="col-sm-2 control-label">ID</label>
                                             <div class="col-sm-10">
-                                                <button type="button" class="btn btn-wd btn-default">
-                                                    <span class="btn-label">
-                                                        <i :class="row.icon" style="font-size:28px"></i>
-                                                    </span>
-                                                </button>
+                                                <p class="form-control-static"></p>
                                             </div>
                                         </div>
                                     </fieldset>
-
                                     <fieldset>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">圖示</label>
+                                            <label class="col-sm-2 control-label">角色名稱</label>
                                             <div class="col-sm-10">
-                                                <select v-model="row.icon" class="form-control">
-                                                    <option disabled value="">請選擇圖示</option>
-                                                </select>
+                                                <input :class="{'form-control': true, 'error': errors.has('name') }" type="text" name="name" placeholder="帳號名稱" data-vv-as="帳號名稱" v-model="row.name" v-validate="'required|min:2|alpha'" required>
+                                                <span v-show="errors.has('name')" class="help-block"></span>
                                             </div>
                                         </div>
                                     </fieldset>
-
                                     <fieldset>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">名稱</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model="row.title">
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">位址</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model="row.href">
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">上層選單</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" v-model="row.parent">
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label class="col-md-2"></label>
-                                            <div class="col-md-10">
+                                            <div class="col-sm-10 col-sm-offset-2">
                                                 <button type="submit" class="btn btn-fill btn-info" v-on:click="save">更新</button>
                                                 <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
                                             </div>
                                         </div>
                                     </fieldset>
                                 </form>
-                                
+                                    
                                 <div class="clearfix"></div>
                                 
                             </div>
@@ -280,9 +217,11 @@
 
                     if (_this.type == 'update') {
                         Vue.http.put(__REST_API_URL__ + _this.row.id, _this.row).then(cb_success, notifyAfterHttpError);
+
                     }
                     else {
-                        Vue.http.post(__REST_API_URL__, _this.row).then(cb_success, notifyAfterHttpError);
+                        Vue.http.options.emulateJSON = true;
+                        Vue.http.post(__REST_API_URL__, _this.row).then(cb_success, notifyAfterHttpError);                        
                     }
 
                 }).catch(function() {
@@ -325,9 +264,6 @@
 
 
     window.operateEvents = {
-        'click .open': function (e, value, row, index) {
-            location.href='/admin/menu?parent='+row.id;
-        },
         'click .view': function (e, value, row, index) {
             $('#panel-list').hide();
             $('#panel-view').show();
@@ -399,9 +335,6 @@
 
     function operateFormatter(value, row, index) {
         return [
-            '<a rel="tooltip" title="開啟" class="btn btn-simple btn-info btn-icon table-action open" href="javascript:void(0)">',
-                '<i class="fa fa-folder-open-o"></i>',
-            '</a>',
             '<a rel="tooltip" title="檢視" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)">',
                 '<i class="fa fa-file-text-o"></i>',
             '</a>',
