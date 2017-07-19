@@ -218,9 +218,11 @@
 
                     if (_this.type == 'update') {
                         Vue.http.put(__REST_API_URL__ + _this.row.id, _this.row).then(cb_success, notifyAfterHttpError);
+
                     }
                     else {
-                        Vue.http.post(__REST_API_URL__, _this.row).then(cb_success, notifyAfterHttpError);
+                        Vue.http.options.emulateJSON = true;
+                        Vue.http.post(__REST_API_URL__, _this.row).then(cb_success, notifyAfterHttpError);                        
                     }
 
                 }).catch(function() {
