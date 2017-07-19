@@ -16,7 +16,7 @@
                                 <p class="category">Here is a subtitle for this table</p>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <div class="content">
+                                <div class="toolbar">
                                     <button type="button" class="btn btn-wd btn-info" id="btn-create">
                                         <span class="btn-label">
                                             <i class="fa fa-user-plus"></i>
@@ -111,8 +111,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" placeholder="Name" v-model="row.name">
+                                                <label>帳號名稱</label>
+                                                <input type="text" class="form-control" placeholder="帳號名稱" v-model="row.username">
                                             </div>
                                         </div>
                                     </div>
@@ -120,22 +120,75 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" class="form-control" placeholder="Email" v-model="row.email">
+                                                <label>密碼</label>
+                                                <input type="text" class="form-control" placeholder="密碼" v-model="row.password">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>確認密碼</label>
+                                                <input type="text" class="form-control" placeholder="確認密碼" v-model="row.password2">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>姓名</label>
+                                                <input type="text" class="form-control" placeholder="姓名" v-model="row.name">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>EMAIL</label>
+                                                <input type="text" class="form-control" placeholder="user@example.com" v-model="row.email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>手機號碼</label>
+                                                <input type="text" class="form-control" placeholder="行動電話門號" v-model="row.cellphone">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>系統備註</label>
+                                                <textarea class="form-control" v-model="row.remark" rows="3" placeholder="網站管理員註記用"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>權限角色</label>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="Admin" v-model="row.roles" checked>
+                                                        系統管理（Admin）
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
-                                    <button type="button" class="btn btn-wd btn-default" v-on:click="cancel">
-                                        <span class="btn-label">
-                                            <i class="fa fa-arrow-left"></i>
-                                        </span>
-                                        Back
-                                    </button>
                                     
-                                    <button id="form_submit" type="submit" class="btn btn-info btn-fill pull-right" v-on:click="save">更新</button>
-                                    <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
-                                    <div class="clearfix"></div>
+                                <button id="form_submit" type="submit" class="btn btn-info btn-fill pull-right" v-on:click="save">更新</button>
+                                <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
+                                <div class="clearfix"></div>
                                 
                             </div>
                         </div>

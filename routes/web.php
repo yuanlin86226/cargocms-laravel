@@ -22,7 +22,7 @@
 
 
 Route::get('/','AuthController@getLogin');
-Route::post('/login','AuthController@postLogin');
+Route::post('/','AuthController@postLogin');
 Route::get('/logout','AuthController@getLogout');
 
 Route::get('/dashboard','BoardController@getIndex');
