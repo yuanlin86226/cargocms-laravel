@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as data_request;
 
-use App\Services\admin\UserService as UserService;
+use App\Services\Admin\UserService as UserService;
 use Exception;
 use App\Exceptions\Handler as Handler;
 
