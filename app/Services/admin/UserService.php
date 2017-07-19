@@ -39,8 +39,10 @@ class UserService {
   
   public function save($user) {
     try {
+      
       $this->verify($user);      
       $createdUser = User::create([
+        'username' => $user["name"],
         'name' => $user["name"], 
         'email' => $user["email"],
         'password' => bcrypt('123456'),
