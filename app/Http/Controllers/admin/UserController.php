@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as data_request;
 
@@ -80,12 +80,14 @@ class UserController extends Controller {
 
     public function save(data_request $request) {
         try {
+            $user['id'] = "";
             $user["email"] = $request -> email; 
             $user["name"] = $request -> name; 
             $this-> userService -> save($user);
 
             $data["result"] = true;
             $data["message"] = "使用者建立成功";
+            
             return response()->json($data);
         } catch (Exception $e) {
             $returnData = array(

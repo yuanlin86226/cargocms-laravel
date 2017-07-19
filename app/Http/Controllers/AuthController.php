@@ -24,7 +24,7 @@ class AuthController extends Controller
         	return Redirect::back()->withErrors(['msg'=>'請輸入完整資料']);
         }
         elseif (Auth::attempt($authData, $request->remember)) {
-            return Redirect::action('admin\MainController@index');
+            return Redirect::action('Admin\MainController@index');
         }
         else {
         	$user = UserEloquent::where('username', $request->username)->get();
