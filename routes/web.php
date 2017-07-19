@@ -28,7 +28,9 @@ Route::post('/login','AuthController@login');
 Route::get('/logout','AuthController@logout');
 
 Route::get('/admin/index','Admin\MainController@index');
-Route::get('/admin/user','Admin\UserController@index');
+
+Route::get('/admin/SystemMenu','Admin\MenuController@index');
+Route::get('/admin/SystemUser','Admin\UserController@index');
 
 // Auth::routes();
 

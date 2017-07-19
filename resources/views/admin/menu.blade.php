@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title','後台人員管理')
-@section('page_title','後台帳號管理')
+@section('page_title','後台選單管理')
 
 @section('content')
 
@@ -9,10 +9,18 @@
         <div class="content" id="panel-list">
             <div class="container-fluid">
 
+            <ol id="breadcrumb" class="breadcrumb" v-cloak>
+                <!-- <li v-if="">頂層</li> -->
+                <li v-if=""><a href="/admin/SystemMenu">頂層</a></li>
+                <!-- <li v-if=""><a href="/admin/SystemMenu">頂層</a></li>
+                <li v-if="" class="active"></li> -->
+            </ol>
+            
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="content table-responsive table-full-width">
+
                                 <div class="toolbar">
                                     <button id="btn-create" class="btn btn-default" type="button" title="新增一篇文章">
                                         <i class="glyphicon fa fa-plus"></i>
@@ -30,9 +38,12 @@
                                     <thead>
                                         <th data-field="state" data-width="50" data-checkbox="true"></th>
                                         <th data-field="id" data-width="50" data-visible="false" class="text-center">ID</th>
-                                        <th data-field="name" data-sortable="true">姓名</th>
-                                        <th data-field="email" data-visible="true">EMAIL</th>
-                                        <th data-field="actions" data-width="150" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
+                                        <th data-field="" data-sortable="true">圖示</th>
+                                        <th data-field="" data-visible="true">標題</th>
+                                        <th data-field="" data-sortable="true">位址</th>
+                                        <th data-field="" data-visible="false">建立日期</th>
+                                        <th data-field="" data-visible="false">建立日期</th>
+                                        <th data-field="actions" data-width="200" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
                                     </thead>
                                     <tbody id="table-body"></tbody>
                                 </table>
@@ -55,112 +66,47 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <legend class="title">檢視</legend>
+                                <h4 class="title">檢視</h4>
                             </div>
-
                             <div class="content">
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>帳號名稱</label>
-                                                <h5>@{{row.username}}</h5>
-                                            </div>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">名稱</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static"></p>
                                         </div>
                                     </div>
+                                </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>姓名</label>
-                                                <h5>@{{row.name}}</h5>
-                                            </div>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">位址</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static"></p>
                                         </div>
                                     </div>
+                                </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>EMAIL</label>
-                                                <h5>@{{row.email}}</h5>
-                                            </div>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">建立日期</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static"></p>
                                         </div>
                                     </div>
+                                </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>手機號碼</label>
-                                                <h5>0978395432</h5>
-                                            </div>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">更新日期</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static"></p>
                                         </div>
                                     </div>
+                                </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>建立日期</label>
-                                                <h5>@{{row.created_at}}</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>更新日期</label>
-                                                <h5>@{{row.updated_at}}</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>系統備註</label>
-                                                <h5>Laborum dolorem optio nam odit impedit debitis asperiores quia impedit.</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>最後登入時間</label>
-                                                <h5>2017/07/19 13:37:27</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>瀏覽器IP位址</label>
-                                                <h5>237.214.209.78</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>瀏覽器除錯資訊</label>
-                                                <h5>Mozilla/5.0 (Windows NT 5.0; Win64; x64; rv:12.1) Gecko/20100101 Firefox/12.1.7</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>權限角色</label>
-                                                <h5>admin</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button type="button" class="btn btn-fill btn-info"  v-on:click="done">返回</button>
-                                    <div class="clearfix"></div>
+                                <button type="button" class="btn btn-fill btn-info"  v-on:click="done">返回</button>
+                                <div class="clearfix"></div>
 
                             </div>
                         </div>
@@ -177,20 +123,26 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <legend v-if="type==='update'">修改 使用者</legend>
-                                <legend v-if="type==='create'">新增 使用者</legend>
-
+                                <legend v-if="type==='update'">修改 選單</legend>
+                                <legend v-if="type==='create'">新增 選單</legend>
                             </div>
                             <div class="content">
                                 
                                 <form method="POST" name="user_form">
                                     {{ csrf_field() }}
                                 
+                                    
+                                    
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>帳號名稱</label>
-                                                <input type="text" class="form-control" placeholder="帳號名稱" v-model="row.username">
+                                                <label>預覽</label>
+                                                 <button type="button" class="btn btn-wd btn-default">
+                                                    <span class="btn-label">
+                                                        <i :class="row.icon" style="font-size:28px"></i>
+                                                    </span>
+                                                   
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -198,8 +150,10 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>密碼</label>
-                                                <input type="text" class="form-control" placeholder="密碼" v-model="row.password">
+                                                <label>圖示</label>
+                                                <select v-model="row.icon" class="form-control">
+                                                    <option disabled value="">請選擇圖示</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -207,8 +161,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>確認密碼</label>
-                                                <input type="text" class="form-control" placeholder="確認密碼" v-model="row.password2">
+                                                <label>名稱</label>
+                                                <input type="text" class="form-control" v-model="row.title">
                                             </div>
                                         </div>
                                     </div>
@@ -216,8 +170,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>姓名</label>
-                                                <input type="text" class="form-control" placeholder="姓名" v-model="row.name">
+                                                <label>位址</label>
+                                                <input type="text" class="form-control" v-model="row.href">
                                             </div>
                                         </div>
                                     </div>
@@ -225,54 +179,9 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>EMAIL</label>
-                                                <input type="text" class="form-control" placeholder="user@example.com" v-model="row.email">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input data-toggle="checkbox" v-model="row.emailConfirmed">
-                                                        已確認
-                                                    </label>
-                                                </div>
+                                                <label>上層選單</label>
+                                                <input type="text" class="form-control" v-model="row.parent">
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>手機號碼</label>
-                                                <input type="text" class="form-control" placeholder="行動電話門號" v-model="row.cellphone">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input data-toggle="checkbox" v-model="row.phoneNumberConfirmed">
-                                                        已確認
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>系統備註</label>
-                                                <textarea class="form-control" v-model="row.remark" rows="3" placeholder="網站管理員註記用"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>權限角色</label>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input data-toggle="checkbox" v-model="row.roles">
-                                                        系統管理（Admin）
-                                                    </label>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </form>
@@ -401,6 +310,9 @@
 
 
     window.operateEvents = {
+        'click .open': function (e, value, row, index) {
+            location.href='/admin/SystemMenu?parent='+row.id;
+        },
         'click .view': function (e, value, row, index) {
             $('#panel-list').hide();
             $('#panel-view').show();
@@ -472,6 +384,9 @@
 
     function operateFormatter(value, row, index) {
         return [
+            '<a rel="tooltip" title="開啟" class="btn btn-simple btn-info btn-icon table-action open" href="javascript:void(0)">',
+                '<i class="fa fa-folder-open-o"></i>',
+            '</a>',
             '<a rel="tooltip" title="檢視" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)">',
                 '<i class="fa fa-file-text-o"></i>',
             '</a>',

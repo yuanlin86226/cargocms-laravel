@@ -12,19 +12,9 @@
             </a>
         </div>
 
-    	<div class="sidebar-wrapper">
+    	<div class="sidebar-wrapper" style="height:auto;">
 
             <ul class="nav">
-                @if( strpos($_SERVER['REQUEST_URI'],'user') )
-                <li class="active">
-                @else
-                <li>
-                @endif
-                    <a href="user">
-                        <i class="pe-7s-users"></i>
-                        <p>會員管理</p>
-                    </a>
-                </li>
 
                 @if( strpos($_SERVER['REQUEST_URI'],'index') )
                 <li class="active">
@@ -33,110 +23,91 @@
                 @endif
                     <a href="index">
                         <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                        <p>控制台</p>
                     </a>
                 </li>
 
+                @if( strpos($_SERVER['REQUEST_URI'],'member') )
+                <li class="active">
+                @else
                 <li>
-                    <a data-toggle="collapse" href="#componentsExamples">
-                        <i class="pe-7s-plugin"></i>
-                        <p>Components
+                @endif
+                    <a data-toggle="collapse" href="#MemberManagement">
+                        <i class="pe-7s-users"></i>
+                        <p>會員管理
                            <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="componentsExamples">
+                    <div class="collapse" id="MemberManagement">
                         <ul class="nav">
-                            <li><a href="components/buttons.html">Buttons</a></li>
-                            <li><a href="components/grid.html">Grid System</a></li>
-                            <li><a href="components/icons.html">Icons</a></li>
-                            <li><a href="components/notifications.html">Notifications</a></li>
-                            <li><a href="components/panels.html">Panels</a></li>
-                            <li><a href="components/sweet-alert.html">Sweet Alert</a></li>
-                            <li><a href="components/typography.html">Typography</a></li>
+                            <li><a href="#">會員資料管理</a></li>
+                            <li><a href="#">資料匯入作業</a></li>
+                            <li><a href="#">資料匯出作業</a></li>
                         </ul>
                     </div>
                 </li>
 
+                @if( strpos($_SERVER['REQUEST_URI'],'System') )
+                <li class="active">
+                @else
                 <li>
-                    <a data-toggle="collapse" href="#formsExamples">
-                        <i class="pe-7s-note2"></i>
-                        <p>Forms
+                @endif
+                    <a data-toggle="collapse" href="#SystemManagement">
+                        <i class="pe-7s-config"></i>
+                        <p>系統管理
                            <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="formsExamples">
+                    <div class="collapse" id="SystemManagement">
                         <ul class="nav">
-                            <li><a href="forms/regular.html">Regular Forms</a></li>
-                            <li><a href="forms/extended.html">Extended Forms</a></li>
-                            <li><a href="forms/validation.html">Validation Forms</a></li>
-                            <li><a href="forms/wizard.html">Wizard</a></li>
+                            <li><a href="SystemMenu">後台選單管理</a></li>
+                            <li><a href="SystemUser">後台帳號管理</a></li>
+                            <li><a href="#">後台角色管理</a></li>
                         </ul>
                     </div>
                 </li>
 
+                @if( strpos($_SERVER['REQUEST_URI'],'activity') )
+                <li class="active">
+                @else
                 <li>
-                    <a data-toggle="collapse" href="#tablesExamples">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Tables
-                           <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="tablesExamples">
-                        <ul class="nav">
-                            <li><a href="tables/regular.html">Regular Tables</a></li>
-                            <li><a href="tables/extended.html">Extended Tables</a></li>
-                            <li><a href="tables/bootstrap-table.html">Bootstrap Table</a></li>
-							<li><a href="tables/datatables.net.html">DataTables.net</a></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li>
-                    <a data-toggle="collapse" href="#mapsExamples">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps
-                           <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="mapsExamples">
-                        <ul class="nav">
-                            <li><a href="maps/google.html">Google Maps</a></li>
-                            <li><a href="maps/vector.html">Vector Maps</a></li>
-                            <li><a href="maps/fullscreen.html">Full Screen Map</a></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li>
-                    <a href="charts.html">
-                        <i class="pe-7s-graph1"></i>
-                        <p>Charts</p>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="calendar.html">
-                        <i class="pe-7s-date"></i>
-                        <p>Calendar</p>
-                    </a>
-                </li>
-
-                <li>
-                    <a data-toggle="collapse" href="#pagesExamples">
+                @endif
+                    <a href="#">
                         <i class="pe-7s-gift"></i>
-                        <p>Pages
+                        <p>活動管理</p>
+                    </a>
+                </li>
+
+                @if( strpos($_SERVER['REQUEST_URI'],'content') )
+                <li class="active">
+                @else
+                <li>
+                @endif
+                    <a data-toggle="collapse" href="#ContentManagement">
+                        <i class="pe-7s-config"></i>
+                        <p>內容管理
                            <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="pagesExamples">
+                    <div class="collapse" id="ContentManagement">
                         <ul class="nav">
-                            <li><a href="pages/login.html">Login Page</a></li>
-                            <li><a href="pages/register.html">Register Page</a></li>
-                            <li><a href="pages/lock.html">Lock Screen Page</a></li>
-                            <li><a href="pages/user.html">User Page</a></li>
-                            <li><a href="#">More coming soon...</a></li>
+                            <li><a href="#">公告管理</a></li>
+                            <li><a href="#">連結管理</a></li>
+                            <li><a href="#">文章管理</a></li>
+                            <li><a href="#">上網導航方塊管理</a></li>
                         </ul>
                     </div>
+                </li>
+
+                @if( strpos($_SERVER['REQUEST_URI'],'guide') )
+                <li class="active">
+                @else
+                <li>
+                @endif
+                    <a href="#">
+                        <i class="pe-7s-map-2"></i>
+                        <p>上網導航上網導航管理</p>
+                    </a>
                 </li>
 
             </ul>
