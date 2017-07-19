@@ -1,4 +1,4 @@
-    <div class="sidebar" data-color="orange" data-image="/assets/img/full-screen-image-3.jpg">
+    <div class="sidebar" data-color="orange" data-image="/assets/admin/img/full-screen-image-3.jpg">
         <!--
 
             Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
@@ -8,7 +8,7 @@
 
         <div class="logo" style="border-bottom:1px solid rgba(255, 255, 255, 0.2);">
             <a href="#" class="logo-text">
-                <img src="/assets/img/logo.png" style="max-width: 180px;padding:50px 0;"/>
+                <img src="/assets/admin/img/logo.png" style="max-width: 180px;padding:50px 0;"/>
             </a>
         </div>
         <div class="logo logo-mini">
