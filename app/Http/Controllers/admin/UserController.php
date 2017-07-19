@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as data_request;
 
-use App\Services\admin\UserService as UserService;
+use App\Services\Admin\UserService as UserService;
 use Exception;
 use App\Exceptions\Handler as Handler;
 
@@ -80,10 +80,7 @@ class UserController extends Controller {
 
     public function save(data_request $request) {
         try {
-            $user['id'] = "";
-            $user["email"] = $request -> email; 
-            $user["name"] = $request -> name; 
-            $this-> userService -> save($user);
+
 
             $data["result"] = true;
             $data["message"] = "使用者建立成功";
