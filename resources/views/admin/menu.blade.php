@@ -69,45 +69,56 @@
                                 <h4 class="title">檢視</h4>
                             </div>
                             <div class="content">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">名稱</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static"></p>
-                                        </div>
-                                    </div>
-                                </fieldset>
 
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">位址</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static"></p>
+                                <form class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">名稱</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </fieldset>
+                                    </fieldset>
 
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">建立日期</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static"></p>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">位址</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </fieldset>
+                                    </fieldset>
 
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">更新日期</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static"></p>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">建立日期</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </fieldset>
+                                    </fieldset>
 
-                                <button type="button" class="btn btn-fill btn-info"  v-on:click="done">返回</button>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">更新日期</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-md-2"></label>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-fill btn-info" v-on:click="done">返回</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                
+                                </form>
+                            
                                 <div class="clearfix"></div>
-
                             </div>
                         </div>
                     </div>
@@ -128,66 +139,70 @@
                             </div>
                             <div class="content">
                                 
-                                <form method="POST" name="user_form">
-                                    {{ csrf_field() }}
-                                
-                                    
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>預覽</label>
-                                                 <button type="button" class="btn btn-wd btn-default">
+                                <form  method="POST" name="user_form" class="form-horizontal">
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">預覽</label>
+                                            <div class="col-sm-10">
+                                                <button type="button" class="btn btn-wd btn-default">
                                                     <span class="btn-label">
                                                         <i :class="row.icon" style="font-size:28px"></i>
                                                     </span>
-                                                   
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>圖示</label>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">圖示</label>
+                                            <div class="col-sm-10">
                                                 <select v-model="row.icon" class="form-control">
                                                     <option disabled value="">請選擇圖示</option>
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>名稱</label>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">名稱</label>
+                                            <div class="col-sm-10">
                                                 <input type="text" class="form-control" v-model="row.title">
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>位址</label>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">位址</label>
+                                            <div class="col-sm-10">
                                                 <input type="text" class="form-control" v-model="row.href">
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>上層選單</label>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">上層選單</label>
+                                            <div class="col-sm-10">
                                                 <input type="text" class="form-control" v-model="row.parent">
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-md-2"></label>
+                                            <div class="col-md-10">
+                                                <button type="submit" class="btn btn-fill btn-info" v-on:click="save">更新</button>
+                                                <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </form>
-                                    
-                                <button id="form_submit" type="submit" class="btn btn-info btn-fill pull-right" v-on:click="save">更新</button>
-                                <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
+                                
                                 <div class="clearfix"></div>
                                 
                             </div>

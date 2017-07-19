@@ -24,7 +24,7 @@ class UserController extends Controller {
 
     public function index(){
         if(Auth::check()){
-            return View::make('admin/user');
+            return View::make('admin/User');
         }
         else{
             return Redirect::action('AuthController@login');

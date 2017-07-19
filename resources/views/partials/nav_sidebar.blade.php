@@ -11,23 +11,56 @@
                 <img src="/assets/img/logo.png" style="max-width: 180px;padding:50px 0;"/>
             </a>
         </div>
+        <div class="logo logo-mini">
+			<a href="＃" class="logo-text">
+				
+			</a>
+		</div>
 
-    	<div class="sidebar-wrapper" style="height:auto;">
+    	<div class="sidebar-wrapper">
 
             <ul class="nav">
 
-                @if( strpos($_SERVER['REQUEST_URI'],'index') )
+                @if( strpos($_SERVER['REQUEST_URI'],'User') )
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a href="index">
-                        <i class="pe-7s-graph"></i>
-                        <p>控制台</p>
+                    <a data-toggle="collapse" href="#UserManagement">
+                        <i class="pe-7s-users"></i>
+                        <p>後台帳號管理
+                           <b class="caret"></b>
+                        </p>
                     </a>
+                    <div class="collapse" id="UserManagement">
+                        <ul class="nav">
+                            <li><a href="User">後台帳號管理</a></li>
+                            <li><a href="#">後台角色管理</a></li>
+                        </ul>
+                    </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'member') )
+                @if( strpos($_SERVER['REQUEST_URI'],'System') )
+                <li class="active">
+                @else
+                <li>
+                @endif
+                    <a data-toggle="collapse" href="#SystemManagement">
+                        <i class="pe-7s-config"></i>
+                        <p>系統參數管理
+                           <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="SystemManagement">
+                        <ul class="nav">
+                            <li><a href="#">系統參數管理</a></li>
+                            <li><a href="SystemMenu">後台選單管理</a></li>
+                            <li><a href="#">備用網址管理</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                @if( strpos($_SERVER['REQUEST_URI'],'Member') )
                 <li class="active">
                 @else
                 <li>
@@ -47,69 +80,66 @@
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'System') )
+                @if( strpos($_SERVER['REQUEST_URI'],'Event') )
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a data-toggle="collapse" href="#SystemManagement">
-                        <i class="pe-7s-config"></i>
-                        <p>系統管理
+                    <a data-toggle="collapse" href="#EventManagement">
+                        <i class="pe-7s-gift"></i>
+                        <p>活動管理
                            <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="SystemManagement">
+                    <div class="collapse" id="EventManagement">
                         <ul class="nav">
-                            <li><a href="SystemMenu">後台選單管理</a></li>
-                            <li><a href="SystemUser">後台帳號管理</a></li>
-                            <li><a href="#">後台角色管理</a></li>
+                            <li><a href="#">活動管理</a></li>
+                            <li><a href="#">提示訊息管理</a></li>
                         </ul>
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'activity') )
+                @if( strpos($_SERVER['REQUEST_URI'],'Page') )
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a href="#">
-                        <i class="pe-7s-gift"></i>
-                        <p>活動管理</p>
-                    </a>
-                </li>
-
-                @if( strpos($_SERVER['REQUEST_URI'],'content') )
-                <li class="active">
-                @else
-                <li>
-                @endif
-                    <a data-toggle="collapse" href="#ContentManagement">
+                    <a data-toggle="collapse" href="#PageManagement">
                         <i class="pe-7s-config"></i>
                         <p>內容管理
                            <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="ContentManagement">
+                    <div class="collapse" id="PageManagement">
                         <ul class="nav">
-                            <li><a href="#">公告管理</a></li>
-                            <li><a href="#">連結管理</a></li>
-                            <li><a href="#">文章管理</a></li>
-                            <li><a href="#">上網導航方塊管理</a></li>
+                            <li><a href="#">頁面圖文管理</a></li>
+                            <li><a href="#">圖片檔案管理</a></li>
                         </ul>
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'guide') )
+                @if( strpos($_SERVER['REQUEST_URI'],'Nav') )
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a href="#">
+                    <a data-toggle="collapse" href="#NavManagement">
                         <i class="pe-7s-map-2"></i>
-                        <p>上網導航上網導航管理</p>
+                        <p>上網導航上網導航管理
+                           <b class="caret"></b>
+                        </p>
                     </a>
+                    <div class="collapse" id="NavManagement">
+                        <ul class="nav">
+                            <li><a href="#">導航連結管理</a></li>
+                            <li><a href="#">熱門遊戲管理</a></li>
+                            <li><a href="#">常用連結管理</a></li>
+                            <li><a href="#">頁尾連結管理</a></li>
+                        </ul>
+                    </div>
                 </li>
 
             </ul>
+
     	</div>
     </div>

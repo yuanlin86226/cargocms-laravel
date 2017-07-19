@@ -24,7 +24,7 @@ class AuthController extends Controller
         	return Redirect::back()->withErrors(['msg'=>'請輸入完整資料']);
         }
         elseif (Auth::attempt($authData, $request->remember)) {
-            return Redirect::action('Admin\MainController@index');
+            return Redirect::action('Admin\UserController@index');
         }
         else {
         	$user = UserEloquent::where('username', $request->username)->get();
@@ -40,6 +40,6 @@ class AuthController extends Controller
 
     public function logout(){
     	Auth::logout();
-    	return Redirect::action('AuthController@login');
+    	return Redirect::action('AuthController@index');
     }
 }

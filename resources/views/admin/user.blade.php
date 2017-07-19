@@ -53,6 +53,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+
                         <div class="card">
                             <div class="header">
                                 <legend class="title">檢視</legend>
@@ -60,107 +61,119 @@
 
                             <div class="content">
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>帳號名稱</label>
-                                                <h5>@{{row.username}}</h5>
+                                <form class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">帳號名稱</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static">@{{row.username}}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>姓名</label>
-                                                <h5>@{{row.name}}</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">姓名</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static">@{{row.name}}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>EMAIL</label>
-                                                <h5>@{{row.email}}</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">EMAIL</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static">@{{row.email}}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>手機號碼</label>
-                                                <h5>0978395432</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">手機號碼</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>建立日期</label>
-                                                <h5>@{{row.created_at}}</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">建立日期</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static">@{{row.created_at}}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>更新日期</label>
-                                                <h5>@{{row.updated_at}}</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">更新日期</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static">@{{row.updated_at}}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>系統備註</label>
-                                                <h5>Laborum dolorem optio nam odit impedit debitis asperiores quia impedit.</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">系統備註</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>最後登入時間</label>
-                                                <h5>2017/07/19 13:37:27</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">最後登入時間</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>瀏覽器IP位址</label>
-                                                <h5>237.214.209.78</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">瀏覽器IP位址</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>瀏覽器除錯資訊</label>
-                                                <h5>Mozilla/5.0 (Windows NT 5.0; Win64; x64; rv:12.1) Gecko/20100101 Firefox/12.1.7</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">瀏覽器除錯資訊</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>權限角色</label>
-                                                <h5>admin</h5>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">權限角色</label>
+                                            <div class="col-sm-10">
+                                                <p class="form-control-static"></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <button type="button" class="btn btn-fill btn-info"  v-on:click="done">返回</button>
-                                    <div class="clearfix"></div>
+                                    
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-md-2"></label>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-fill btn-info" v-on:click="done">返回</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                                <div class="clearfix"></div>
 
                             </div>
                         </div>
@@ -183,102 +196,112 @@
                             </div>
                             <div class="content">
                                 
-                                <form method="POST" name="user_form">
+                                <form method="POST" name="user_form" class="form-horizontal">
                                     {{ csrf_field() }}
                                 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>帳號名稱</label>
-                                                <input type="text" class="form-control" placeholder="帳號名稱" v-model="row.username">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">帳號名稱</label>
+                                            <div class="col-sm-10">
+                                                <input :class="{'form-control': true, 'error': errors.has('userName') }" type="text" name="userName" placeholder="帳號名稱" data-vv-as="帳號名稱" v-model="row.username" v-validate="'required|min:2|alpha_dash'" required>
+                                                <span v-show="errors.has('username')" class="help-block">@{{ errors.first('username') }}</span>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>密碼</label>
-                                                <input type="text" class="form-control" placeholder="密碼" v-model="row.password">
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">密碼</label>
+                                            <div class="col-sm-10">
+                                                <input :class="{'form-control': true, 'error': errors.has('password') }" type="password" name="password" placeholder="密碼" data-vv-as="密碼" v-model="row.password" v-validate="type=='create'?'required|min:5':'min:5'">
+                                                <span v-show="errors.has('password')" class="help-block">@{{ errors.first('password') }}</span>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>確認密碼</label>
-                                                <input type="text" class="form-control" placeholder="確認密碼" v-model="row.password2">
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">確認密碼</label>
+                                            <div class="col-sm-10">
+                                                <input :class="{'form-control': true, 'error': errors.has('password2') }" type="password" name="password2" placeholder="確認密碼" data-vv-as="確認密碼" v-model="row.password2" v-validate="row.password?'required|confirmed:password':'confirmed:password'">
+                                                <span v-show="errors.has('password2')" class="help-block">@{{ errors.first('password2') }}</span>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>姓名</label>
-                                                <input type="text" class="form-control" placeholder="姓名" v-model="row.name">
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">姓名</label>
+                                            <div class="col-sm-10">
+                                                <input :class="{'form-control': true, 'error': errors.has('name') }" type="text" name="name" placeholder="請輸入全名" data-vv-as="姓名" v-model="row.name" v-validate="'required'" required>
+                                                <span v-show="errors.has('name')" class="help-block">@{{ errors.first('name') }}</span>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>EMAIL</label>
-                                                <input type="text" class="form-control" placeholder="user@example.com" v-model="row.email">
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Email</label>
+                                            <div class="col-sm-10">
+                                                <input :class="{'form-control': true, 'error': errors.has('email') }" type="text" name="email" placeholder="user@example.com" data-vv-as="Email" v-model="row.email" v-validate="'required|email'" required>
+                                                <span v-show="errors.has('email')" class="help-block">@{{ errors.first('email') }}</span>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input data-toggle="checkbox" v-model="row.emailConfirmed">
+                                                        <input type="checkbox" v-model="row.emailConfirmed" />
                                                         已確認
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>手機號碼</label>
-                                                <input type="text" class="form-control" placeholder="行動電話門號" v-model="row.cellphone">
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">手機號碼</label>
+                                            <div class="col-sm-10">
+                                                <input :class="{'form-control': true, 'error': errors.has('phoneNumber') }" type="text" name="phoneNumber" placeholder="行動電話門號" data-vv-as="手機號碼" v-model="row.phoneNumber" v-validate="'regex:^[0-9\.\-]+$'">
+                                                <span v-show="errors.has('phoneNumber')" class="help-block">@{{ errors.first('phoneNumber') }}</span>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input data-toggle="checkbox" v-model="row.phoneNumberConfirmed">
+                                                        <input type="checkbox" v-model="row.phoneNumberConfirmed" />
                                                         已確認
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>系統備註</label>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">系統備註</label>
+                                            <div class="col-sm-10">
                                                 <textarea class="form-control" v-model="row.remark" rows="3" placeholder="網站管理員註記用"></textarea>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>權限角色</label>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">權限角色</label>
+                                            <div class="col-sm-10">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input data-toggle="checkbox" v-model="row.roles">
+                                                        <input type="checkbox" value="Admin" v-model="row.roles">
                                                         系統管理（Admin）
                                                     </label>
                                                 </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="User" v-model="row.roles">
+                                                        使用者（User）
+                                                    </label>
+                                                </div>
                                             </div>
-
                                         </div>
-                                    </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="col-sm-10 col-sm-offset-2">
+                                                <button type="submit" class="btn btn-fill btn-info" v-on:click="save">更新</button>
+                                                <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </form>
                                     
-                                <button id="form_submit" type="submit" class="btn btn-info btn-fill pull-right" v-on:click="save">更新</button>
-                                <button type="submit" class="btn btn-default" v-on:click="cancel">取消</button>
                                 <div class="clearfix"></div>
                                 
                             </div>

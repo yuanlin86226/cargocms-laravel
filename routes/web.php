@@ -25,12 +25,12 @@ Route::get('/','AuthController@index');
 Route::get('/login','AuthController@index');
 
 Route::post('/login','AuthController@login');
-Route::get('/logout','AuthController@logout');
+Route::get('/admin/logout','AuthController@logout');
 
-Route::get('/admin/index','Admin\MainController@index');
+// Route::get('/admin/index','Admin\MainController@index');
 
 Route::get('/admin/SystemMenu','Admin\MenuController@index');
-Route::get('/admin/SystemUser','Admin\UserController@index');
+Route::get('/admin/User','Admin\UserController@index');
 
 // Auth::routes();
 
