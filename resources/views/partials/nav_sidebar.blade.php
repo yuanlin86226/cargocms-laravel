@@ -21,7 +21,7 @@
 
             <ul class="nav">
 
-                @if( strpos($_SERVER['REQUEST_URI'],'User') )
+                @if( strpos($_SERVER['REQUEST_URI'],'user') )
                 <li class="active">
                 @else
                 <li>
@@ -34,13 +34,13 @@
                     </a>
                     <div class="collapse" id="UserManagement">
                         <ul class="nav">
-                            <li><a href="User">後台帳號管理</a></li>
+                            <li><a href="user">後台帳號管理</a></li>
                             <li><a href="#">後台角色管理</a></li>
                         </ul>
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'System') )
+                @if( strpos($_SERVER['REQUEST_URI'],'system') )
                 <li class="active">
                 @else
                 <li>
@@ -54,13 +54,13 @@
                     <div class="collapse" id="SystemManagement">
                         <ul class="nav">
                             <li><a href="#">系統參數管理</a></li>
-                            <li><a href="SystemMenu">後台選單管理</a></li>
+                            <li><a href="systemMenu">後台選單管理</a></li>
                             <li><a href="#">備用網址管理</a></li>
                         </ul>
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'Member') )
+                @if( strpos($_SERVER['REQUEST_URI'],'member') )
                 <li class="active">
                 @else
                 <li>
@@ -80,7 +80,7 @@
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'Event') )
+                @if( strpos($_SERVER['REQUEST_URI'],'event') )
                 <li class="active">
                 @else
                 <li>
@@ -99,7 +99,7 @@
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'Page') )
+                @if( strpos($_SERVER['REQUEST_URI'],'page') )
                 <li class="active">
                 @else
                 <li>
@@ -118,7 +118,7 @@
                     </div>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'Nav') )
+                @if( strpos($_SERVER['REQUEST_URI'],'nav') )
                 <li class="active">
                 @else
                 <li>

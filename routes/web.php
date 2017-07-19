@@ -29,8 +29,8 @@ Route::get('/admin/logout','AuthController@logout');
 
 // Route::get('/admin/index','Admin\MainController@index');
 
-Route::get('/admin/SystemMenu','Admin\MenuController@index');
-Route::get('/admin/User','Admin\UserController@index');
+Route::get('/admin/systemMenu','Admin\MenuController@index');
+Route::get('/admin/user','Admin\UserController@index');
 
 // Auth::routes();
 
