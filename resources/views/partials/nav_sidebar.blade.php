@@ -49,12 +49,12 @@
                     </a>
                 </li>
 
-                @if( strpos($_SERVER['REQUEST_URI'],'dashboard') )
+                @if( strpos($_SERVER['REQUEST_URI'],'index') )
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a href="dashboard">
+                    <a href="index">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
