@@ -6,36 +6,13 @@
 
         -->
 
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="logo-text">
-                Creative Tim
+        <div class="logo" style="border-bottom:1px solid rgba(255, 255, 255, 0.2);">
+            <a href="#" class="logo-text">
+                <img src="/assets/img/logo.png" style="max-width: 180px;padding:50px 0;"/>
             </a>
         </div>
-		<div class="logo logo-mini">
-			<a href="http://www.creative-tim.com" class="logo-text">
-				Ct
-			</a>
-		</div>
 
     	<div class="sidebar-wrapper">
-            <div class="user">
-                <div class="photo">
-                    <img src="/assets/img/default-avatar.png" />
-                </div>
-                <div class="info">
-                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                        Tania Andrew
-                        <b class="caret"></b>
-                    </a>
-                    <div class="collapse" id="collapseExample">
-                        <ul class="nav">
-                            <li><a href="#">My Profile</a></li>
-                            <li><a href="#">Edit Profile</a></li>
-                            <li><a href="#">Settings</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
             <ul class="nav">
                 @if( strpos($_SERVER['REQUEST_URI'],'user') )

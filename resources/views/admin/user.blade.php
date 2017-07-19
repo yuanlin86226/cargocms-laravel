@@ -4,17 +4,13 @@
 
 @section('content')
 
-@php ($REST_API = '/api/user/')
+@php ($REST_API = '/api/admin/user/')
         <div class="content" id="panel-list">
             <div class="container-fluid">
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
-                                <h4 class="title">user Table</h4>
-                                <p class="category">Here is a subtitle for this table</p>
-                            </div>
                             <div class="content table-responsive table-full-width">
                                 <div class="toolbar">
                                     <button type="button" class="btn btn-wd btn-info" id="btn-create">
@@ -149,6 +145,12 @@
                                             <div class="form-group">
                                                 <label>EMAIL</label>
                                                 <input type="text" class="form-control" placeholder="user@example.com" v-model="row.email">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input data-toggle="checkbox" v-model="row.emailConfirmed">
+                                                        已確認
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -158,6 +160,12 @@
                                             <div class="form-group">
                                                 <label>手機號碼</label>
                                                 <input type="text" class="form-control" placeholder="行動電話門號" v-model="row.cellphone">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input data-toggle="checkbox" v-model="row.phoneNumberConfirmed">
+                                                        已確認
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -177,11 +185,12 @@
                                                 <label>權限角色</label>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" value="Admin" v-model="row.roles" checked>
+                                                        <input data-toggle="checkbox" v-model="row.roles">
                                                         系統管理（Admin）
                                                     </label>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </form>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as data_request;
 
-use App\Services\UserService as UserService;
+use App\Services\admin\UserService as UserService;
 use Exception;
 use App\Exceptions\Handler as Handler;
 
@@ -24,10 +24,10 @@ class UserController extends Controller {
 
     public function index(){
         if(Auth::check()){
-            return View::make('user');
+            return View::make('admin/user');
         }
         else{
-            return Redirect::action('AuthController@getLogin');
+            return Redirect::action('AuthController@login');
         }
     }
 

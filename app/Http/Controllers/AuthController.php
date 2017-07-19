@@ -11,11 +11,11 @@ use View;
 
 class AuthController extends Controller
 {
-    public function getLogin(){
+    public function index(){
     	return View::make('login');
     }
 
-    public function postLogin(Request $request){
+    public function login(Request $request){
         $authData = $request->only(['username', 'password']);
 
         // http://laraveldaily.com/laravel-login-email-username-one-field/
@@ -24,7 +24,7 @@ class AuthController extends Controller
         	return Redirect::back()->withErrors(['msg'=>'請輸入完整資料']);
         }
         elseif (Auth::attempt($authData, $request->remember)) {
-            return Redirect::action('BoardController@getIndex');
+            return Redirect::action('admin\MainController@index');
         }
         else {
         	$user = UserEloquent::where('username', $request->username)->get();
@@ -38,8 +38,8 @@ class AuthController extends Controller
         }
     }
 
-    public function getLogout(){
+    public function logout(){
     	Auth::logout();
-    	return Redirect::action('AuthController@getLogin');
+    	return Redirect::action('AuthController@login');
     }
 }

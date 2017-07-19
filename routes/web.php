@@ -21,13 +21,15 @@
 
 
 
-Route::get('/','AuthController@getLogin');
-Route::post('/','AuthController@postLogin');
-Route::get('/logout','AuthController@getLogout');
+Route::get('/','AuthController@index');
+Route::get('/login','AuthController@index');
 
-Route::get('/dashboard','BoardController@getIndex');
-Route::get('/user','UserController@index');
+Route::post('/login','AuthController@login');
+Route::get('/logout','AuthController@logout');
 
-Auth::routes();
+Route::get('/index','admin\MainController@index');
+Route::get('/user','admin\UserController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
