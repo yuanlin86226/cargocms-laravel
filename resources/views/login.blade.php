@@ -1,4 +1,4 @@
-@extends('layouts.master_login')
+@extends('layouts.admin_login')
 
 @section('title','登入畫面')
 

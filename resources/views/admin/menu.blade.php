@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('title','後台人員管理')
 @section('page_title','後台選單管理')
