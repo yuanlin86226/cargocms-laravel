@@ -80,7 +80,10 @@ class UserController extends Controller {
 
     public function save(data_request $request) {
         try {
-
+            $user['id'] = "";
+            $user["email"] = $request -> email; 
+            $user["name"] = $request -> name; 
+            $this-> userService -> save($user);
 
             $data["result"] = true;
             $data["message"] = "使用者建立成功";
